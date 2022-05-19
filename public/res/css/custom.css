@@ -1,0 +1,16 @@
+@font-face {
+    font-family: ekkamai;
+    src: url(../font/ekkamainew.ttf);
+}
+@font-face {
+    font-family: notosans;
+    src: url(../font/notosans.ttf);
+}
+@font-face {
+    font-family: notosansthai;
+    src: url(../font/notosansthai.ttf);
+}
+body{
+    font-family: notosansthai,notosans;
+    overflow-y: scroll;
+}

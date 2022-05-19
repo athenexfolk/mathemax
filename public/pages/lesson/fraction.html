@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Integer</title>
+
+    <link rel="stylesheet" href="/public/res/css/bootstrap.css">
+    <link rel="stylesheet" href="/public/res/css/custom.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+      MathJax = {
+          tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+          chtml: {
+              scale: 0.85
+          },
+          svg: {
+              scale: 0.85
+          }
+      };
+  </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.7.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.7.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+  </head>
+  <body class="bg-light">
+
+
+
+
+
+
+    
+    <!-- Start Content -->
+
+      <div class="container-fluid p-0">
+
+        <!-- navigation bar -->
+        <nav class="shadow-sm navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+          <div class="container-fluid px-4 py-2">
+            <a class="navbar-brand"><h1>MathemaX</h1></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/public/index.html">หน้าหลัก</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/public/pages/lesson.html">บทเรียน</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/public/pages/calculator.html">เครื่องคิดเลข</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <!-- main -->
+        <div class="shadow d-flex justify-content-center bg-white m-3 p-3 rounded-3 border border-1">
+            <div class="col-2 d-none d-lg-block">
+            </div>
+            <div class="col p-0">
+              <div class="accordion" id="accordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size: 0.75em;">
+                      เศษส่วน
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">การแบ่งสิ่งของให้เป็นส่วน ๆ เช่น เค้ก เราไม่สามารถใช้จำนวนเต็ม เพื่อบอกปริมาณของสิ่งของที่แบ่งนั้นได้ จึงมีจำนวนอีกประเภทที่นำมาใช้เพื่ออธิบายปริมาณที่เกิดจากการแบ่งสิ่งของ เรียกว่า เศษส่วน (fraction)</h6>
+                      <h6 class="lh-base">ส่วนประกอบของเศษส่วน เกิดจากการหารจำนวนเต็ม \(a\div b\) โดยเราจะใช้สัญลักษณ์ \(\dfrac{a}{b}\) แทนเศษส่วน และให้ความหมายเดียวกันกับการหาร \((a\div b=\dfrac{a}{b})\) ซึ่ง \(a\) หมายถึง ตัวเศษ (numerator) และ \(b\) หมายถึง ตัวส่วน (denominator) ที่คั่นด้วยเส้นแบ่งแนวนอน (vinculum) หรือคั่นด้วยเครื่องหมายทับ (solidus) เป็น \(a/b \) เราจะอ่านเศษส่วนเหล่านี้ว่า เศษ \(a\) ส่วน \(b\)</h6>
+                      <h6 class="lh-base">▶ <span class="text-primary">เศษส่วนสามัญ (common fraction, vulgar)</span></h6>
+                      <h6 class="lh-base">เป็นเศษส่วนที่มีตัวเศษและตัวส่วนเป็นจำนวนเต็ม แบ่งได้เป็นสองประเภท ได้แก่</h6>
+                      <h6 class="lh-base ps-4">▸ เศษส่วนแท้ (proper fraction) คือ เศษส่วนสามัญที่มีตัวเศษน้อยกว่าตัวส่วน</h6>
+                      <h6 class="lh-base ps-4">▸ เศษส่วนเกิน (improper fraction) คือ เศษส่วนสามัญที่มีตัวเศษมากกว่าหรือเท่ากับตัวส่วน</h6>
+                      <h6 class="lh-base">▶ <span class="text-primary">จำนวนคละ (mixed number)</span></h6>
+                      <h6 class="lh-base">เป็นรูปแบบของการประกอบจำนวนเต็ม \(a\) เข้ากับเศษส่วนแท้ \(\dfrac{b}{c}\) เป็น \(a\dfrac{b}{c}\) ซึ่งมีค่าเท่ากับ \(a+\dfrac{b}{c}\)</h6>
+                      <h6 class="lh-base">เราสามารถเปลี่ยนจำนวนคละเป็นเศษส่วนเกิน โดยการคูณตัวส่วนเข้ากับจำนวนเต็มแล้วนำผลลัพธ์ไปบวกกับตัวเศษ</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                            <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงทำให้ \(5\dfrac{3}{5}\) เป็นเศษส่วนเกิน</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(4\dfrac{3}{5}=\dfrac{(4\times5)+3}{5}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(4\dfrac{3}{5}\) </span>\(=\dfrac{20+3}{5}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(4\dfrac{3}{5}\) </span>\(=\dfrac{23}{5}\)</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">เราสามารถเปลี่ยนเศษส่วนเกินเป็นจำนวนคละ โดยการหารเศษส่วนเกินนั้น ผลหารที่ได้จะเป็นส่วนจำนวนเต็มของจำนวนคละ และเศษจากการหารเป็นส่วนของตัวเศษ และตัวส่วนเท่าเดิม</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                            <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงทำให้ \(\dfrac{23}{5}\) เป็นจำนวนคละ</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/fraction_mixed1.svg" alt="mixed number"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">▶ <span class="text-primary">เศษส่วนที่เทียบเท่ากันและเศษส่วนอย่างต่ำ </span></h6>
+                      <h6 class="lh-base">เศษส่วนสองจำนวนใด ๆ จะเทียบเท่ากัน เมื่อเศษส่วนจำนวนหนึ่งสามารถเปลี่ยนให้อยู่ในรูปของอีกเศษส่วนหนึ่งได้ โดยการคูณหรือการหารด้วยจำนวนจำนวนหนึ่งทั้งเศษและส่วน</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                            <h6 class="lh-base">ตัวอย่างที่ \(3\) : \(\dfrac{2}{5}, \dfrac{6}{15}\) เป็นเศษส่วนที่เทียบเท่ากันหรือไม่</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(\dfrac{2}{5}, \dfrac{6}{15}\) เป็นเศษส่วนที่เทียบเท่ากัน เพราะมี \(3\) ที่ทำให้</h6>
+                            <h6 class="lh-base">\(\dfrac{2}{5}=\dfrac{6\div3}{15\div3}\) และ \(\dfrac{6}{15}=\dfrac{2\times3}{5\times3}\)</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">เศษส่วนอย่างต่ำ คือ เศษส่วนที่ ห.ร.ม. ของตัวเศษและตัวส่วนเป็น \(1\) สำหรับเศษส่วนที่ยังไม่เป็นเศษส่วนอย่างต่ำ สามารถทำได้โดยเอา ห.ร.ม. ที่ได้มาหารทั้งเศษและส่วน</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                            <h6 class="lh-base">ตัวอย่างที่ \(4\) : จงทำให้ \(\dfrac{18}{60}\) เป็นเศษส่วนอย่างต่ำ</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">ห.ร.ม. ของ \(18,60\) เป็น \(6\) ทำการหารเศษและส่วนด้วย \(6\)</h6>
+                            <h6 class="lh-base">\(\dfrac{18}{60}=\dfrac{18\div6}{60\div6}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{18}{60}\)</span> \(=\dfrac{3}{10}\)</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">▶ <span class="text-primary">เศษส่วนซ้อน</span></h6>
+                      <h6 class="lh-base">เป็นรูปแบบของเศษส่วนที่มีตัวเศษหรือตัวส่วนเป็นเศษส่วนที่สามารถลดรูปให้เป็นเศษส่วนชั้นเดียว โดยการดำเนินการบนเศษส่วน ตัวอย่างเช่น \(\dfrac{5}{2+\dfrac{1}{7}}\)</h6>
+                      <h6 class="lh-base">▶ <span class="text-primary">ส่วนกลับของเศษส่วน</span></h6>
+                      <h6 class="lh-base">ส่วนกลับของเศษส่วน หรือตัวผกผันการคูณของเศษส่วน หมายถึง เศษส่วนอีกจำนวนที่มีตัวเศษกับตัวส่วนสลับกัน โดยสองจำนวนนั้นคูณกันได้ \(1\) นอกจากนี้ จำนวนเต็ม ยังหมายถึง เศษส่วนที่มีตัวเศษเป็นจำนวนเต็มนั้น และตัวส่วนเป็น \(1\)</h6>
+                      <h6 class="lh-base">ดังนั้นส่วนกลับของจำนวนเต็ม นั่นก็คือ เศษส่วนที่มีตัวเศษเป็น \(1\) และตัวส่วนเป็นจำนวนเต็มนั้น</h6>
+                      <h6 class="lh-base">กำหนดให้ \(\dfrac{a}{b}\) เป็นเศษส่วนที่ \(a,b\) เป็นจำนวนเต็ม แล้วส่วนกลับของ \(\dfrac{a}{b}\) คือ \(\dfrac{b}{a}\)</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                            <h6 class="lh-base">ตัวอย่างที่ \(5\) : จงหาส่วนกลับของ \(\dfrac{4}{7},\dfrac{8}{3},5,\dfrac{1}{9}\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(\dfrac{7}{4},\dfrac{3}{8},\dfrac{1}{5},9\)</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo" style="scroll-margin-top: 200px;">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 0.75em;">
+                      การเปรียบเทียบเศษส่วน
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">กำหนดให้ \(a,b,c,d\) เป็นจำนวนเต็มใด ๆ</h6>
+                      <h6 class="lh-base">การเปรียบเทียบเศษส่วน มีหลักการเปรียบเทียบอยู่สองกรณี ได้แก่</h6>
+                      <h6 class="lh-base">\(1.\) กรณีตัวส่วนเท่ากัน \(\bigg(\dfrac{a}{c},\dfrac{b}{c}\bigg)\)</h6>
+                      <h6 class="lh-base">ถ้า \(a>b\) แล้ว \(\dfrac{a}{c}>\dfrac{b}{c}\)</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงเปรียบเทียบ \(\dfrac{6}{13},\dfrac{9}{13}\)</h6>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="lh-base">เพราะตัวส่วนเท่ากัน และ \(6\lt9\)</h6>
+                          <h6 class="lh-base">ดังนั้น \(\dfrac{6}{13}\lt\dfrac{9}{13}\)</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">\(2.\) กรณีตัวส่วนไม่เท่ากัน \(\bigg(\dfrac{a}{c},\dfrac{b}{d}\bigg)\)</h6>
+                      <h6 class="lh-base">เราต้องทำให้ตัวส่วนเท่ากันก่อน โดยการคูณตัวส่วนของอีกจำนวนทั้งเศษและส่วน</h6>
+                      <h6 class="lh-base">\(\dfrac{a}{c}=\dfrac{a\times d}{c\times d}=\dfrac{ad}{cd}\)</h6>
+                      <h6 class="lh-base">\(\dfrac{b}{d}=\dfrac{b\times c}{d\times c}=\dfrac{bc}{cd}\)</h6>
+                      <h6 class="lh-base">ถ้า \(ad>bc\) แล้ว \(\dfrac{a}{c}>\dfrac{b}{d}\)</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงเปรียบเทียบ \(\dfrac{5}{8},\dfrac{2}{3}\)</h6>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="lh-base">เพราะตัวส่วนไม่เท่ากัน ทำให้ส่วนเท่ากันก่อน</h6>
+                          <h6 class="lh-base">จะได้ \(\dfrac{5\times 3}{8\times 3}=\dfrac{15}{24}\) และ \(\dfrac{2\times 8}{3\times 8}=\dfrac{16}{24}\)</h6>
+                          <h6 class="lh-base">พบว่า \(15\lt16\)</h6>
+                          <h6 class="lh-base">ดังนั้น \(\dfrac{5}{8}\lt\dfrac{2}{3}\)</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="font-size: 0.75em;">
+                      การบวกเศษส่วน
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">เศษส่วนสองจำนวนจะบวกกันได้ ก็ต่อเมื่อตัวส่วนเท่ากัน หากตัวส่วนเท่ากันแล้ว สามารถนำตัวเศษมาบวกกันได้เลย หรือหากยังไม่เท่ากัน ให้นำตัวส่วนของอีกจำนวนมาคูณทั้งเศษและส่วน แล้วนำมาบวกกัน</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาค่าของ \(\dfrac{5}{12}+\dfrac{4}{12}\)</h6>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="lh-base">\(\dfrac{5}{12}+\dfrac{4}{12}=\dfrac{5+4}{12}\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(\dfrac{5}{12}+\dfrac{4}{12}\) </span>\(=\dfrac{9}{12}\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(\dfrac{5}{12}+\dfrac{4}{12}\) </span>\(=\cancelto{\dfrac{3}{4}}{\dfrac{9}{12}}\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(\dfrac{5}{12}+\dfrac{4}{12}\) </span>\(=\dfrac{3}{4}\)</h6>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาค่าของ \(\dfrac{2}{7}+\dfrac{4}{9}\)</h6>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="lh-base">\(\dfrac{2}{7}+\dfrac{4}{9}=\dfrac{2\times 9}{7\times 9}+\dfrac{4\times 7}{9\times 7}\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2}{7}+\dfrac{4}{9}\) </span>\(=\dfrac{18}{63}+\dfrac{28}{63}\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2}{7}+\dfrac{4}{9}\) </span>\(=\dfrac{18+28}{63}\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2}{7}+\dfrac{4}{9}\) </span>\(=\dfrac{46}{63}\)</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">สำหรับการบวกจำนวนคละ สามารถแยกทำการบวกจำนวนเต็มกับเศษส่วน แล้วค่อยนำมารวมกันอีก</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : จงหาค่าของ \(6\dfrac{1}{3}+2\dfrac{2}{5}\)</h6>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="lh-base">\(6\dfrac{1}{3}+2\dfrac{2}{5}=6+\dfrac{1}{3}+2+\dfrac{2}{5}\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=6+2+\dfrac{1}{3}+\dfrac{2}{5}\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=(6+2)+\bigg(\dfrac{1}{3}+\dfrac{2}{5}\bigg)\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=8+\dfrac{11}{15}\)</h6>
+                          <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=8\dfrac{11}{15}\)</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="font-size: 0.75em;">
+                      การลบเศษส่วน
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <h6 class="lh-base">เช่นเดียวกับการบวก เศษส่วนสองจำนวนจะลบกันได้ ก็ต่อเมื่อตัวส่วนเท่ากัน หากตัวส่วนเท่ากันแล้ว สามารถนำตัวเศษมาลบกันได้เลย หรือหากยังไม่เท่ากัน ให้นำตัวส่วนของอีกจำนวนมาคูณทั้งเศษและส่วน แล้วนำมาลบกัน</h6>
+                        <div class="card my-3 shadow-sm">
+                          <div class="card-header pt-3">
+                            <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาค่าของ \(\dfrac{5}{12}-\dfrac{4}{12}\)</h6>
+                          </div>
+                          <div class="card-body">
+                            <h6 class="lh-base">\(\dfrac{5}{12}-\dfrac{4}{12}=\dfrac{5-4}{12}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{5}{12}-\dfrac{4}{12}\) </span>\(=\dfrac{1}{12}\)</h6>
+                          </div>
+                        </div>
+                        <div class="card my-3 shadow-sm">
+                          <div class="card-header pt-3">
+                            <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาค่าของ \(\dfrac{2}{7}-\dfrac{4}{9}\)</h6>
+                          </div>
+                          <div class="card-body">
+                            <h6 class="lh-base">\(\dfrac{2}{7}-\dfrac{4}{9}=\dfrac{2\times 9}{7\times 9}-\dfrac{4\times 7}{9\times 7}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2}{7}-\dfrac{4}{9}\) </span>\(=\dfrac{18}{63}-\dfrac{28}{63}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2}{7}-\dfrac{4}{9}\) </span>\(=\dfrac{18-28}{63}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2}{7}-\dfrac{4}{9}\) </span>\(=\dfrac{-10}{63}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2}{7}-\dfrac{4}{9}\) </span>\(=-\dfrac{10}{63}\)</h6>
+                          </div>
+                        </div>
+                        <h6 class="lh-base">สำหรับการลบจำนวนคละ สามารถแยกทำการลบจำนวนเต็มกับเศษส่วน แล้วค่อยนำมารวมกันอีก</h6>
+                        <div class="card my-3 shadow-sm">
+                          <div class="card-header pt-3">
+                            <h6 class="lh-base">ตัวอย่างที่ \(3\) : จงหาค่าของ \(6\dfrac{1}{3}-2\dfrac{2}{5}\)</h6>
+                          </div>
+                          <div class="card-body">
+                            <h6 class="lh-base">\(6\dfrac{1}{3}-2\dfrac{2}{5}=6+\dfrac{1}{3}-\bigg(2+\dfrac{2}{5}\bigg)\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=6+\dfrac{1}{3}-2-\dfrac{2}{5}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=6-2+\dfrac{1}{3}-\dfrac{2}{5}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=(6-2)+\bigg(\dfrac{1}{3}-\dfrac{2}{5}\bigg)\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=4+\bigg(-\dfrac{11}{15}\bigg)\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=4-\dfrac{11}{15}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=\dfrac{4\times 15}{1\times 15}-\dfrac{11}{15}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=\dfrac{60}{15}-\dfrac{11}{15}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=\dfrac{60-11}{15}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=\dfrac{49}{15}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(6\dfrac{1}{3}+2\dfrac{2}{5}\) </span>\(=3\dfrac{4}{15}\)</h6>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="font-size: 0.75em;">
+                      การคูณเศษส่วน
+                    </button>
+                  </h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">สำหรับการคูณเศษส่วน สามารถทำได้โดยการนำตัวเศษคูณกับตัวเศษ และตัวส่วนคูณกับตัวส่วน</h6>
+                      <h6 class="lh-base">ถ้ากำหนดให้ \(\dfrac{a}{c},\dfrac{b}{d}\) เป็นเศษส่วนใด ๆ ที่ \(a,b,c,d\) เป็นจำนวนเต็ม</h6>
+                      <h6 class="lh-base">แล้ว \(\dfrac{a}{c}\times\dfrac{b}{d}=\dfrac{ab}{cd}\)
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาค่าของ \(\dfrac{3}{4}\times\dfrac{4}{5}\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(\dfrac{3}{4}\times\dfrac{4}{5}=\dfrac{3\times4}{4\times5}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{3}{4}\times\dfrac{4}{5}\) </span>\(=\dfrac{12}{20}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{3}{4}\times\dfrac{4}{5}\) </span>\(=\cancelto{\dfrac{3}{5}}{\dfrac{12}{20}}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{3}{4}\times\dfrac{4}{5}\) </span>\(=\dfrac{3}{5}\)</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">เรายังสามารถใช้เทคนิคการทอนเศษส่วนเพื่อลดขั้นตอนในการหาค่าของเศษส่วนได้ โดยการใช้ ห.ร.ม. เข้ามาช่วยในการคูณและการหารเศษส่วนได้</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาค่าของ \(\dfrac{6}{11}\times\dfrac{55}{9}\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">เราทราบว่า \(gcd(11,55)=11\) และ \(gcd(6,9)=3\)</h6>
+                            <h6 class="lh-base">เราสามารถนำค่าที่ได้จากการ ห.ร.ม.มาหารทั้งเศษและส่วน หรือหารจำนวนที่นำมาหา ห.ร.ม. เพื่อลดทอนเศษส่วนได้</h6>
+                            <h6 class="lh-base">\(\dfrac{6}{11}\times\dfrac{55}{9}=\dfrac{\cancel{6}^2\times\cancel{55}^5}{\cancel{11}^1\times\cancel{9}^3}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{6}{11}\times\dfrac{55}{9}\) </span>\(=\dfrac{2\times5}{1\times3}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{6}{11}\times\dfrac{55}{9}\) </span>\(=\dfrac{10}{3}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{6}{11}\times\dfrac{55}{9}\) </span>\(=3\dfrac{1}{3}\)</h6>
+                            <h6 class="lh-base">หากทำคล่องแล้วจะทำให้คิดในใจได้ และช่วยลดระยะเวลาในการทำได้</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">สำหรับการคูณจำนวนคละ ไม่สามารถทำตรง ๆ ได้ เพราะจำนวนคละถูกคั่นด้วยเครื่องหมายบวกอยู่ ถึงแม้จะไม่ปรากฏรูปก็ตาม หากจะทำการคูณจำนวนคละ ต้องทำให้เป็นเศษส่วนเกินเสียก่อน แล้วจึงนำมาคูณกันตามปกติ</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : จงหาค่าของ \(3\dfrac{3}{4}\times\dfrac{2}{5}\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(3\dfrac{3}{4}\times\dfrac{2}{5}=\dfrac{(3\times4)+3}{4}\times\dfrac{2}{5}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(3\dfrac{3}{4}\times\dfrac{2}{5}\) </span>\(=\dfrac{12+3}{4}\times\dfrac{2}{5}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(3\dfrac{3}{4}\times\dfrac{2}{5}\) </span>\(=\dfrac{15}{4}\times\dfrac{2}{5}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(3\dfrac{3}{4}\times\dfrac{2}{5}\) </span>\(=\dfrac{15\times2}{4\times5}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(3\dfrac{3}{4}\times\dfrac{2}{5}\) </span>\(=\dfrac{\cancel{15}^3\times\cancel{2}^1}{\cancel{4}^2\times\cancel{5}^1}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(3\dfrac{3}{4}\times\dfrac{2}{5}\) </span>\(=\dfrac{3\times1}{2\times1}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(3\dfrac{3}{4}\times\dfrac{2}{5}\) </span>\(=\dfrac{3}{2}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(3\dfrac{3}{4}\times\dfrac{2}{5}\) </span>\(=1\dfrac{1}{2}\)</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="font-size: 0.75em;">
+                      การหารเศษส่วน
+                    </button>
+                  </h2>
+                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">สำหรับการหารเศษส่วน (หรือการหาค่าของเศษส่วนซ้อน) สามารถทำได้โดยการเปลี่ยนตัวหาร (ตัวส่วน) ให้เป็นส่วนกลับแล้วทำการคูณได้เลย</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาค่าของ \(\dfrac{4}{7}\div\dfrac{8}{3}\) หรือ \(\dfrac{4/7}{8/3}\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(\dfrac{4}{7}\div\dfrac{8}{3}=\dfrac{4}{7}\times\dfrac{3}{8}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{4}{7}\div\dfrac{8}{3}\) </span>\(=\dfrac{4\times3}{7\times8}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{4}{7}\div\dfrac{8}{3}\) </span>\(=\dfrac{\cancel{4}^1\times3}{7\times\cancel{8}^2}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{4}{7}\div\dfrac{8}{3}\) </span>\(=\dfrac{1\times3}{7\times2}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{4}{7}\div\dfrac{8}{3}\) </span>\(=\dfrac{3}{14}\)</h6>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาค่าของ \(\dfrac{2\dfrac{4}{5}}{3\dfrac{4}{7}}\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(\dfrac{2\dfrac{4}{5}}{3\dfrac{4}{7}}=\dfrac{\dfrac{14}{5}}{\dfrac{25}{7}}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2\dfrac{4}{5}}{3\dfrac{4}{7}}\) </span>\(=\dfrac{14}{5}\times\dfrac{7}{25}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2\dfrac{4}{5}}{3\dfrac{4}{7}}\) </span>\(=\dfrac{14\times7}{5\times25}\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(\dfrac{2\dfrac{4}{5}}{3\dfrac{4}{7}}\) </span>\(=\dfrac{98}{125}\)</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingSeven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" style="font-size: 0.75em;">
+                      ทศนิยม
+                    </button>
+                  </h2>
+                  <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">ทศนิยม (decimal) หมายถึง ค่าของจำนวนเต็มที่แบ่งออกเป็นสิบส่วน ร้อยส่วน พันส่วน หมื่นส่วน ... เท่า ๆ กัน</h6>
+                      <h6 class="lh-base">พิจารณาจำนวนเต็ม \(1\) ที่แบ่งออกเป็นสิบส่วน ดังรูป</h6>
+                      <div class="text-center m-3"><img src="/public/res/img/fraction_pos1.svg" alt="decimal position"></div>
+                      <h6 class="lh-base">\(0.1\) หมายถึง หนึ่งส่วนในสิบส่วน อธิบายได้ดังรูป</h6>
+                      <div class="text-center m-3"><img src="/public/res/img/fraction_pos2.svg" alt="decimal position"></div>
+                      <h6 class="lh-base">\(0.3\) หมายถึง สามส่วนในสิบส่วน อธิบายได้ดังรูป</h6>
+                      <div class="text-center m-3"><img src="/public/res/img/fraction_pos3.svg" alt="decimal position"></div>
+                      <h6 class="lh-base">\(1.5\) หมายถึง จำนวนเต็มหนึ่งกับห้าส่วนในสิบส่วน อธิบายได้ดังรูป</h6>
+                      <div class="text-center m-3"><img src="/public/res/img/fraction_pos4.svg" alt="decimal position"></div>
+                      <h6 class="lh-base">สำหรับร้อยส่วน พันส่วน หมื่นส่วน ... เพียงแบ่งจำนวนช่องให้มากขึ้น ก็จะได้ทศนิยมที่มีตำแหน่งมากขึ้น เช่น \(0.04\) (สี่ส่วนในร้อยส่วน) \(0.032\) (สามสิบสองส่วนในพันส่วน)</h6>
+                      <h6 class="lh-base text-muted">▸ การอ่านทศนิยมให้อ่านเลขตรง ๆ เลย เช่น \(3.52\) อ่านว่า สามจุดห้าสอง</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingEight">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight" style="font-size: 0.75em;">
+                      ค่าประจำหลักของทศนิยม
+                    </button>
+                  </h2>
+                  <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <h6 class="lh-base">ในจำนวนเต็ม จะแบ่งหลักออกเป็นหลักสิบ หลักร้อย หลักพัน หลักหมื่น ...</h6>
+                        <h6 class="lh-base">สำหรับทศนิยมเอง (เลขหลังจุด) ก็มีการแบ่งหลักออกเป็น หลักส่วนสิบ หลักส่วนร้อย หลักส่วนพัน หลักส่วนหมื่น ... </h6>
+                        <h6 class="lh-base">ซึ่งจะใช้ \(0.1,0.01,0.001,0.0001,...\) แทนค่าประจำหลักของหลักส่วน ตามลำดับ ซึ่งสรุปได้เป็นตาราง ดังนี้</h6>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">หลัก</th>
+                                <th scope="col">ค่าประจำหลัก</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                  <td>...</td>
+                                  <td>...</td>
+                              </tr>
+                              <tr>
+                                <td>หลักพัน</td>
+                                <td>\(1000\)</td>
+                              </tr>
+                              <tr>
+                                <td>หลักร้อย</td>
+                                <td>\(100\)</td>
+                              </tr>
+                              <tr>
+                                <td>หลักสิบ</td>
+                                <td>\(10\)</td>
+                              </tr>
+                              <tr>
+                                <td>หลักหน่วย</td>
+                                <td>\(1\)</td>
+                              </tr>
+                              <tr>
+                                <td>หลักส่วนสิบ</td>
+                                <td>\(0.1\)</td>
+                              </tr>
+                              <tr>
+                                <td>หลักส่วนร้อย</td>
+                                <td>\(0.01\)</td>
+                              </tr>
+                              <tr>
+                                <td>หลักส่วนพัน</td>
+                                <td>\(0.001\)</td>
+                              </tr>
+                              <tr>
+                                <td>...</td>
+                                <td>...</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        <h6 class="lh-base">เราสามารถกระจายทศนิยมได้โดยนำเลขโดดในแต่ละตำแหน่งคูณกับค่าประจำหลักแล้วบวกกัน</h6>
+                        <div class="card my-3 shadow-sm">
+                            <div class="card-header pt-3">
+                              <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงกระจายทศนิยม \(123.45\)</h6>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="lh-base">\(123.45=100+20+3+0.4+0.05\)</h6>
+                                <h6 class="lh-base"><span class="opacity-0">\(123.45\) </span>\(=(1\times100)+(2\times10)+(3\times1)+(4\times0.1)+(5\times0.01)\)</h6>
+                            </div>
+                        </div>
+                        <div class="card my-3 shadow-sm">
+                            <div class="card-header pt-3">
+                              <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงกระจายทศนิยม \(0.9876\)</h6>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="lh-base">\(0.9876=0.9+0.08+0.007+0.0006\)</h6>
+                                <h6 class="lh-base"><span class="opacity-0">\(0.9876\) </span>\(=(9\times0.1)+(8\times0.01)+(7\times0.001)+(6\times0.0001)\)</h6>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingNine">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine" style="font-size: 0.75em;">
+                      การบวก ลบ คูณ หารทศนิยม
+                    </button>
+                  </h2>
+                  <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">การบวกทศนิยมสามารถทำได้โดยตั้งหลักและจุดให้ตรงกัน แล้วทำการบวก ตำแหน่งที่ขาดถือว่าเป็นศูนย์</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาค่าของ \(254.23+48.432\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center m-3"><img src="/public/res/img/fraction_add1.svg" alt="decimal addition"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">การลบทศนิยมก็ทำเช่นเดียวกันกับการบวก ตั้งหลักและจุดให้ตรงกัน แล้วทำการลบ ตำแหน่งที่ขาดถือว่าเป็นศูนย์</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาค่าของ \(410.392-742.779\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center m-3"><img src="/public/res/img/fraction_sub1.svg" alt="decimal subtraction"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">การคูณทศนิยม ให้ทำการคูณโดยไม่สนจุดก่อน แล้วผลลัพธ์ให้ใส่จุดตรงตำแหน่งที่ทำให้ผลลัพธ์เป็นทศนิยมตำแหน่งตามผลรวมตำแหน่งของทศนิยมที่นำมาคูณกัน</h6>
+                      <h6 class="lh-base">ถ้ากำหนดให้ \(d_1,d_2\) เป็นทศนิยม \(n_1,n_2\) ตำแหน่ง ตามลำดับ แล้ว \(d_1\times d_2\) เป็นทศนิยม \(n_1+n_2\) ตำแหน่ง</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : จงหาค่าของ \(34.21\times51.4\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center m-3"><img src="/public/res/img/fraction_mul1.svg" alt="decimal multiplication"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">การหารทศนิยม ไม่มีตำแหน่งแน่นอนเหมือนการคูณ ให้เลื่อนจุดทศนิยมของทั้งสองจำนวนจนกว่าทุกตัวจะเป็นจำนวนเต็ม (เมื่อเลื่อนจุดทศนิยมจำนวนใดจำนวนหนึ่งแล้ว อีกจำนวนก็ต้องทำด้วย) หากมีจำนวนหนึ่งเป็นจำนวนเต็มแล้ว แต่ต้องทำการเลื่อนจุดทศนิยมอีก ให้เติม \(0\) ต่อท้ายแทนการเลื่อนจุดทศนิยม (ให้เทียบกับการคูณด้วย \(10\) ทั้งสองจำนวนไปเรื่อย ๆ จนเป็นจำนวนเต็มทั้งหมด ด้วยวิธีนี้จะทำให้ผลลัพธ์ยังคงเดิม) หลังจากได้แล้วก็สามารถทำการหารได้ตามปกติ</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(4\) : จงหาค่าของ \(5.12\div0.0016\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center m-3"><img src="/public/res/img/fraction_div1.svg" alt="decimal division"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTen">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen" style="font-size: 0.75em;">
+                      ความสัมพันธ์ของเศษส่วนและทศนิยม
+                    </button>
+                  </h2>
+                  <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">เนื่องจากเศษส่วนคือการหารระหว่างตัวเศษและตัวส่วน ซึ่งผลหารนั้นสามารถทำให้ออกมาอยู่ในรูปของทศนิยมได้ (จำนวนเต็มถือเป็นทศนิยมที่มีเลขหลังจุดเป็นศูนย์ทั้งหมด)</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงทำให้ \(\dfrac{3}{4}\) เป็นทศนิยม</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center m-3"><img src="/public/res/img/fraction_rdf1.svg" alt="decimal and fraction relation"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">ลองพิจารณาเศษส่วนต่อไปนี้</h6>
+                      <h6 class="lh-base">\(\dfrac{1}{10}\) สามารถแปลงเป็นทศนิยมได้เป็น \(0.1\)</h6>
+                      <h6 class="lh-base">\(\dfrac{1}{100}\) สามารถแปลงเป็นทศนิยมได้เป็น \(0.01\)</h6>
+                      <h6 class="lh-base">\(\dfrac{1}{1000}\) สามารถแปลงเป็นทศนิยมได้เป็น \(0.001\)</h6>
+                      <h6 class="lh-base">\(...\)</h6>
+                      <h6 class="lh-base">และลองพิจารณา \(\dfrac{4}{10}=4\times\dfrac{1}{10}=4\times0.1=0.4\)</h6>
+                      <h6 class="lh-base">จะเห็นว่าหากตัวส่วนมีค่าเป็น \(10,100,1000,...\) สามารถแปลงเป็นทศนิยมได้โดยง่าย หากตัวส่วนไม่เป็นจำนวนเหล่านี้ แต่ยังสามารถคูณหรือหารกับอีกจำนวนหนึ่งแล้วได้เป็น \(10,100,1000,...\) ก็ยังสามารถแปลงเป็นทศนิยมได้โดยวิธีนี้</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงทำให้ \(\dfrac{3}{4}\) เป็นทศนิยม</h6>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="lh-base">พิจารณา \(\dfrac{3}{4}\) ที่คูณด้วย \(25\) ทั้งเศษและส่วน</h6>
+                          <h6 class="lh-base">\(\dfrac{3\times25}{4\times25}=\dfrac{75}{100}=0.75\)</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingEleven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven" style="font-size: 0.75em;">
+                     ทศนิยมรู้จบ ทศนิยมซ้ำ ทศนิยมไม่ซ้ำไม่รู้จบ
+                    </button>
+                  </h2>
+                  <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">จากเรื่องก่อนหน้านี้ เราได้รู้จักกับทศนิยม ซึ่งทศนิยมเหล่านั้น อยู่ในประเภท ทศนิยมรู้จบ คือ ทศนิยมที่สามารถแปลงเป็นเศษส่วนที่มีตัวส่วนเป็น \(10,100,1000,...\) ได้  (ตัวเศษต้องเป็นจำนวนเต็ม)</h6>
+                      <h6 class="lh-base">พิจารณาเศษส่วน \(\dfrac{1}{3}\) โดยการหารให้เป็นทศนิยม</h6>
+                      <div class="text-center m-3"><img src="/public/res/img/fraction_rdf2.svg" alt="decimal and fraction relation"></div>
+                      <h6 class="lh-base">จะเห็นว่าการหารนี้ไม่มีสิ้นสุดเพราะเศษสุดท้ายไม่เป็นศูนย์เลย ซึ่งจะทำให้ผลลัพธ์เป็นทศนิยมที่ซ้ำและไม่มีที่สิ้นสุด เราจะเรียกทศนิยมประเภทนี้ว่าเป็น ทศนิยมซ้ำ</h6>
+                      <h6 class="lh-base">นอกจากนี้ ยังสังเกตได้ว่า เศษส่วนที่ทำให้เป็นทศนิยมซ้ำ ตัวส่วนนั้นไม่สามารถหาตัวคูณที่เป็นจำนวนเต็ม มาคูณแล้วได้เป็น \(10,100,1000,...\) เลย</h6>
+                      <h6 class="lh-base">การแปลงเศษส่วนให้เป็นทศนิยมซ้ำ สามารถทำได้โดยการหาร ซึ่งการหารนั้นจะไม่สิ้นสุด ดังที่เคยแสดงไป และกลับกัน หากจะทำให้ทศนิยมซ้ำเป็นเศษส่วน เราจะใช้ความรู้เรื่องสมการเข้ามาช่วยในการแปลง ดังตัวอย่างต่อไปนี้</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงทำให้ \(0.333..\) เป็นเศษส่วน</h6>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="lh-base">สมมติให้ \(d = 0.333...\) เป็นสมการที่หนึ่ง \((E_1)\)</h6>
+                          <h6 class="lh-base">คูณ \(10\) ตลอดสมการที่หนึ่ง \((10\times E_1)\)</h6>
+                          <h6 class="lh-base">จะได้ \(10d=3.333...\) ให้เป็นสมการที่สอง \((E_2)\)</h6>
+                          <h6 class="lh-base">จากนั้นนำสมการที่สองลบด้วยสมการที่หนึ่ง \((E_2-E_1)\)</h6>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(10d-d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(3.333...-0.333...\)</h6></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(9d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(3\)</h6></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(\dfrac{3}{9}\)</h6></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(\dfrac{1}{3}\)</h6></div>
+                          </div>
+                          <h6 class="lh-base">ดังนั้น \(0.333...=\dfrac{1}{3}\)</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">นอกจากนี้ เรายังสามารถใช้สัญลักษณ์ทางคณิตศาสตร์เพื่อบ่งบอกการซ้ำของทศนิยมที่หลากหลายขึ้นได้</h6>
+                      <h6 class="lh-base">▶ จุด</h6>
+                      <h6 class="lh-base">ใส่จุดบนตัวเลขที่ซ้ำ เช่น \(0.\dot{2}\) หมายถึง \(0.222...\) หรือ \(3.43\dot{1}\) หมายถึง \(3.431111...\)</h6>
+                      <h6 class="lh-base">เรายังสามารถใช้จุดสองจุดเพื่อบ่งบอกชุดของตัวเลขที่ซ้ำกันได้ เช่น \(0.\dot{3}\dot{2}\) หมายถึง \(0.32323232...\) หรือ \(0.12\dot{3}4\dot{5}\) หมายถึง \(0.12345345345...\)</h6>
+                      <h6 class="lh-base">▶ ขีด</h6>
+                      <h6 class="lh-base">ใส่ขีดบนตัวเลข หรือชุดของตัวเลขที่ซ้ำ เช่น \(3.4\overline{7}\) หมายถึง \(3.4777777...\) หรือ \(1.2\overline{987}\) หมายถึง \(1.2987987987...\)</h6>
+                      <h6 class="lh-base">▶ วงเล็บ</h6>
+                      <h6 class="lh-base">ใส่ครอบตัวเลข หรือชุดของตัวเลขที่ซ้ำ เช่น \(9.(53)\) หมายถึง \(9.53535353...\)</h6>
+                      <h6 class="lh-base">ทั้งนี้ การใช้จุดสามจุด \((...)\) ก็สามารถบ่งบอกตัวเลขซ้ำได้ โดยอาศัยการสังเกตจากรูปแบบที่ซ้ำกัน</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงทำให้ \(5.39\dot{6}\) เป็นเศษส่วน</h6>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="lh-base">แยกจำนวนเต็มที่มีอยู่ออกไปก่อน เพื่อให้สะดวกต่อการคำนวณ จะได้ \(5+0.39\dot{6}\) เราจะคำนวณเฉพาะส่วน \(0.39\dot{6}\) ให้เป็นเศษส่วน แล้วจึงค่อยนำ \(5\) มาบวกใส่ทีหลังให้เป็นจำนวนคละ</h6>
+                          <h6 class="lh-base">สมมติให้ \(d = 0.39\dot{6}\) เป็นสมการที่หนึ่ง \((E_1)\)</h6>
+                          <h6 class="lh-base">คูณ \(100\) ตลอดสมการที่หนึ่ง \((100\times E_1)\) (ทำให้ตัวเลขที่ไม่ซ้ำไปเป็นจำนวนเต็ม)</h6>
+                          <h6 class="lh-base">จะได้ \(100d=39.\dot{6}\) ให้เป็นสมการที่สอง \((E_2)\)</h6>
+                          <h6 class="lh-base">คูณ \(10\) ตลอดสมการที่สอง \((10\times E_2)\)</h6>
+                          <h6 class="lh-base">จะได้ \(1000d=396.\dot{6}\) ให้เป็นสมการที่สาม \((E_3)\)</h6>
+                          <h6 class="lh-base">จากนั้นนำสมการที่สามลบด้วยสมการที่สอง \((E_3-E_2)\)</h6>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(1000d-100d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(396.\dot{6}-39.\dot{6}\)</h6></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(900d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(357\)</h6></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(\dfrac{357}{900}\)</h6></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(\dfrac{119}{300}\)</h6></div>
+                          </div>
+                          <h6 class="lh-base">นำ \(5\) ที่นำออกไปกลับเข้ามาบวกใส่</h6>
+                          <h6 class="lh-base">ดังนั้น \(5.39\dot{6}=5\dfrac{119}{300}\)</h6>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : จงทำให้ \(0.12\overline{345}\) เป็นเศษส่วน</h6>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="lh-base">สมมติให้ \(d = 0.12\overline{345}\) เป็นสมการที่หนึ่ง \((E_1)\)</h6>
+                          <h6 class="lh-base">คูณ \(100\) ตลอดสมการที่หนึ่ง \((100\times E_1)\) (ทำให้ตัวเลขที่ไม่ซ้ำไปเป็นจำนวนเต็ม)</h6>
+                          <h6 class="lh-base">จะได้ \(100d=12.\overline{345}\) ให้เป็นสมการที่สอง \((E_2)\)</h6>
+                          <h6 class="lh-base">คูณ \(1000\) ตลอดสมการที่สอง \((10\times E_2)\) (ทำให้ชุดที่ซ้ำชุดหนึ่งไปเป็นจำนวนเต็ม)</h6>
+                          <h6 class="lh-base">จะได้ \(100000d=12345.\overline{345}\) ให้เป็นสมการที่สาม \((E_3)\)</h6>
+                          <h6 class="lh-base">จากนั้นนำสมการที่สามลบด้วยสมการที่สอง \((E_3-E_2)\)</h6>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(100000d-100d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(12345.\overline{345}-12.\overline{345}\)</h6></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(99900d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(12333\)</h6></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(\dfrac{12333}{99900}\)</h6></div>
+                          </div>
+                          <div class="row">
+                            <div class="col-5 text-end"><h6 class="lh-base">\(d\)</h6></div>
+                            <div class="col-2 text-center"><h6 class="lh-base">\(=\)</h6></div>
+                            <div class="col-5 text-start"><h6 class="lh-base">\(\dfrac{4111}{33300}\)</h6></div>
+                          </div>
+                          <h6 class="lh-base">ดังนั้น \(0.12\overline{345}=\dfrac{4111}{33300}\)</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">ทั้งทศนิยมรู้จบ และทศนิยมซ้ำเหล่านี้ ล้วนแล้วเป็นจำนวนที่สามารถแปลงเป็นเศษส่วนได้ จำนวนที่สามารถเขียนให้ออกมาอยู่ในรูปเศษส่วนสามัญได้เรียกว่า จำนวนตรรกยะ ซึ่งจะได้ศึกษาในหัวข้อจำนวนจริงต่อไป</h6>
+                      <h6 class="lh-base">แต่ยังมีทศนิยมอีกประเภทที่ไม่ได้เป็น จำนวนตรรกยะ คือ ทศนิยมไม่ซ้ำไม่รู้จบ เป็นทศนิยมที่ไม่สามารถหารูปแบบซ้ำ และจุดสิ้นสุดของทศนิยมนี้ได้ เช่น \(0.1011121314...\) (ทราบว่ามีรูปแบบเป็นจำนวนเรียงต่อกัน แต่ไม่สามารถหาจุดที่ซ้ำ หรือจุดที่สิ้นสุดได้) โดยจำนวนนี้เรียกว่า จำนวนอตรรกยะ ซึ่งจะเรียนในหัวข้อจำนวนจริงอีกจำนวน</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button type="button" class="btn btn-outline-dark mt-4 float-end" disabled>ทำแบบทดสอบ</button>
+              </div>
+            </div>
+            <div class="col-2 d-none d-lg-block">
+            </div>
+        </div>
+        <nav aria-label="Page navigation" class="m-4">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a class="page-link" href="integer.html"><span aria-hidden="true">&laquo;</span></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">เศษส่วนและทศนิยม</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="power_and_root.html"><span aria-hidden="true">&raquo;</span></a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="m-4">
+
+        <!-- footer -->
+        <div class="container-fluid bg-dark text-secondary py-3">
+          <div class="row">
+            <div class="col">
+              <h6>MathemaX©2022</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Close Content -->
+    
+
+
+
+
+
+    <script>
+      go.addEventListener("click", ()=>{
+        back.setAttribute("class","d-inline btn btn-warning")
+      })
+      back.addEventListener("click", ()=> {
+        history.back()
+        back.setAttribute("class","d-none btn btn-warning")
+      });
+
+    </script>
+    <script src="/public/res/js/bootstrap.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
+</html>
