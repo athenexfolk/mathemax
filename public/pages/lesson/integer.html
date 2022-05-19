@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Integer</title>
+
+    <link rel="stylesheet" href="/public/res/css/bootstrap.css">
+    <link rel="stylesheet" href="/public/res/css/custom.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+      MathJax = {
+          tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+          chtml: {
+              scale: 0.85
+          },
+          svg: {
+              scale: 0.85
+          }
+      };
+  </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.7.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.7.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.7.0/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+  </head>
+  <body class="bg-light">
+
+
+
+
+
+
+    
+    <!-- Start Content -->
+
+      <div class="container-fluid p-0">
+
+        <!-- navigation bar -->
+        <nav class="shadow-sm navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+          <div class="container-fluid px-4 py-2">
+            <a class="navbar-brand"><h1>MathemaX</h1></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/public/index.html">หน้าหลัก</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/public/pages/lesson.html">บทเรียน</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/public/pages/calculator.html">เครื่องคิดเลข</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <!-- main -->
+        <div class="shadow d-flex justify-content-center bg-white m-3 p-3 rounded-3 border border-1">
+            <div class="col-2 d-none d-lg-block">
+            </div>
+            <div class="col p-0">
+              <div class="accordion" id="accordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size: 0.75em;">
+                      จำนวนเต็ม
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">ในชีวิตประจำวัน เราอาจจะเคยพบจำนวนนับอยู่บ่อย ๆ แต่บางจำนวนเช่น อุณหภูมิ \(-7\) องศาเซลเซียส หรือยอดเงินคงเหลือ \(0\) บาท จำนวนเหล่านี้ไม่เป็นจำนวนนับ แต่รวมอยู่ใน จำนวนเต็ม (integer) ที่เรากำลังจะศึกษาในที่นี้</h6>
+                      <h6 class="lh-base">จาก <a href="natural_number.html">จำนวนนับ</a> สมมติให้ \(a,b\) เป็นจำนวนนับโดยที่ \(a>b\) เราพบว่า \(a-b\) เป็นจำนวนนับ แต่กลับกัน เราพบว่า \(b-a\) นั้นไม่ใช่จำนวนนับ เราจะให้ความหมายกับจำนวนที่ไม่ใช่จำนวนนับนี้ว่าเป็น ตัวผกผัน (inverse) การบวกของจำนวนนับ นอกจากนี้ เรายังพบว่า \(a-a\) มีค่าเป็น \(0\) ซึ่งไม่ใช่จำนวนนับอีกเช่นกัน</h6>
+                      <h6 class="lh-base">เราจะให้นิยามของจำนวนทั้งหมดเหล่านี้ ว่าเป็นจำนวนที่ไม่มีองค์ประกอบของเศษส่วนและทศนิยม หรือ จำนวนเต็ม ซึ่งประกอบด้วย</h6>
+                      <h6 class="lh-base ps-3">▶ <span class="text-primary">จำนวนเต็มบวก (positive integer)  </span>หมายถึง จำนวนนับ หรือจำนวนเต็มที่มีค่า<span class="text-danger">มากกว่า</span>ศูนย์ ได้แก่ \[1,2,3,4,5,6,7,...\]</h6>
+                      <h6 class="lh-base ps-3">▶ <span class="text-primary">จำนวนเต็มลบ (negative integer)  </span>หมายถึง ตัวผกผันการบวกของจำนวนนับ หรือจำนวนเต็มที่มีค่า<span class="text-danger">น้อยกว่า</span>ศูนย์ ได้แก่ \[-1,-2,-3,-4,-5,-6,-7,...\]</h6>
+                      <h6 class="lh-base ps-3">▶ <span class="text-primary">ศูนย์ (zero)  </span>ได้แก่ \[0\]</h6>
+                      <h6 class="lh-base">โดยแผนภาพต่อไปนี้จะแสดงถึงส่วนประกอบของจำนวนเต็ม</h6>
+                      <div class="text-center my-3"><img src="/public/res/img/integer_component1.svg" alt="integer components"></div>
+                      <h6 class="lh-base text-muted">▸ การแบ่งจำนวนคู่ จำนวนคี่ในจำนวนนับ ยังใช้แบ่งกับจำนวนเต็มชนิดอื่นได้</h6>
+                      <h6 class="lh-base text-muted">▸ จำนวนเต็มลบ จะอ่านตามสัญลักษณ์เลย เช่น \(-2\) อ่านว่า ลบสอง</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo" style="scroll-margin-top: 200px;">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 0.75em;">
+                      เส้นจำนวนในระบบจำนวนเต็ม
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">เส้นจำนวน (number line) ในระบบจำนวนเต็ม คือ เส้นตรงที่แบ่งช่องว่างด้วยจุด โดยแต่ละจุดห่างเท่ากัน หากกำหนดให้จุดหนึ่งเป็นศูนย์ แล้วจุดที่อยู่ทางซ้ายของศูนย์ คือ จำนวนเต็มลบ และจุดที่อยู่ทางขวาของศูนย์ คือ จำนวนเต็มบวก ดังรูป</h6>
+                      <div class="text-center mt-3"><img src="/public/res/img/integer_nbl1.svg" alt="number line"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="font-size: 0.75em;">
+                      การเปรียบเทียบจำนวนเต็ม
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">จำนวนเต็ม มีคุณสมบัติหนึ่งเรียกว่า ไตรวิภาค (trichotomy) คือ เมื่อนำจำนวนเต็มสองจำนวน \(a,b\) ใด ๆ มาเปรียบเทียบกัน แล้ว \(a&lt; b\) หรือ \(a&gt; b\) หรือ \(a=b\) อย่างใดอย่างหนึ่ง</h6>
+                      <h6 class="lh-base">เราสามารถเปรียบเทียบจำนวนเต็มโดยใช้เส้นจำนวนได้ จำนวนที่อยู่ทางขวา จะมากกว่าจำนวนที่อยู่ทางซ้าย</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงเปรียบเทียบ \(3\) และ \(-4\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center my-3"><img src="/public/res/img/integer_cpi1.svg" alt="number comparing"></div>
+                          <h6 class="lh-base">ดังนั้น \(3\gt -4\)</h6>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงเปรียบเทียบ \(-5\) และ \(-4\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center my-3"><img src="/public/res/img/integer_cpi2.svg" alt="number comparing"></div>
+                          <h6 class="lh-base">ดังนั้น \(-5\lt -4\)</h6>
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="font-size: 0.75em;">
+                      ค่าสัมบูรณ์ของจำนวนเต็ม
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">ค่าสัมบูรณ์ (absolute value, modulus) ของจำนวนเต็มใด ๆ หมายถึง ระยะทางจากจำนวนเต็มนั้นไปถึงศูนย์</h6>
+                      <h6 class="lh-base">กำหนดให้ \(a\) เป็นจำนวนเต็มใด ๆ แล้วค่าสัมบูรณ์ของ \(a\) แทนด้วย \(|a|\)</h6>
+                      <h6 class="lh-base">เราสามารถหาค่าสัมบูรณ์ได้จากเส้นจำนวน โดยวัดระยะทางจากจำนวนนั้นไปถึงศูนย์</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาค่าของ \(|6|\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center my-3"><img src="/public/res/img/integer_abs1.svg" alt="absolute value"></div>
+                          <h6 class="lh-base">ดังนั้น \(|6|=6\)</h6>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาค่าของ \(|-6|\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center my-3"><img src="/public/res/img/integer_abs2.svg" alt="absolute value"></div>
+                          <h6 class="lh-base">ดังนั้น \(|-6|=6\)</h6>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">จากทั้งสองตัวอย่าง เราจะเห็นว่าค่าสัมบูรณ์ที่ได้ มีค่าเป็นจำนวนเต็มบวก</h6>
+                      <h6 class="lh-base">และหากลองพิจารณา \(|0|\) จะได้ผลลัพธ์เป็นศูนย์</h6>
+                      <h6 class="lh-base">ดังนั้น ค่าสัมบูรณ์ของจำนวนเต็มใด ๆ มีค่ามากกว่าหรือเท่ากับศูนย์เสมอ</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="font-size: 0.75em;">
+                      การบวกจำนวนเต็ม
+                    </button>
+                  </h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base ps-3">▶ <span class="text-primary">การบวกจำนวนเต็มใด ๆ ด้วยจำนวนเต็มบวก</span></h6>
+                      <h6 class="lh-base">กำหนดตัวตั้งบนเส้นจำนวน แล้ว<span class="text-danger">เพิ่มค่า</span>ตัวตั้งตามตัวบวก</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : \(2+3=5\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add1.svg" alt="integer addition"></div>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : \((-2)+3=1\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add2.svg" alt="integer addition"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base ps-3">▶ <span class="text-primary">การบวกจำนวนเต็มใด ๆ ด้วยจำนวนเต็มลบ</span></h6>
+                      <h6 class="lh-base">กำหนดตัวตั้งบนเส้นจำนวน แล้ว<span class="text-danger">ลดค่า</span>ตัวตั้งตามตัวบวก</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : \(2+(-3)=-1\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add3.svg" alt="integer addition"></div>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(4\) : \((-2)+(-3)=-5\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add4.svg" alt="integer addition"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base ps-3">▶ <span class="text-primary">การบวกจำนวนเต็มใด ๆ ด้วยศูนย์</span></h6>
+                      <h6 class="lh-base">ศูนย์บวกจำนวนเต็มใด ๆ จะได้ผลลัพธ์เป็นจำนวนเต็มนั้น</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(5\) : \(3+0=3\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add5.svg" alt="integer addition"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="font-size: 0.75em;">
+                      การลบจำนวนเต็ม
+                    </button>
+                  </h2>
+                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base ps-3">▶ <span class="text-primary">การลบจำนวนเต็มใด ๆ ด้วยจำนวนเต็มบวก</span></h6>
+                      <h6 class="lh-base">กำหนดตัวตั้งบนเส้นจำนวน แล้ว<span class="text-danger">ลดค่า</span>ตัวตั้งตามตัวบวก</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : \(2-3=-1\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add3.svg" alt="integer subtraction"></div>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : \((-2)-3=-5\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add4.svg" alt="integer subtraction"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base ps-3">▶ <span class="text-primary">การลบจำนวนเต็มใด ๆ ด้วยจำนวนเต็มลบ</span></h6>
+                      <h6 class="lh-base">กำหนดตัวตั้งบนเส้นจำนวน แล้ว<span class="text-danger">เพิ่มค่า</span>ตัวตั้งตามตัวบวก</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : \(2-(-3)=5\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add1.svg" alt="integer subtraction"></div>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(4\) : \((-2)-(-3)=1\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add2.svg" alt="integer subtraction"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base ps-3">▶ <span class="text-primary">การลบจำนวนเต็มใด ๆ ด้วยศูนย์</span></h6>
+                      <h6 class="lh-base">ศูนย์ลบออกจากจำนวนเต็มใด ๆ จะได้ผลลัพธ์เป็นจำนวนเต็มนั้น</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(5\) : \(3-0=3\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mt-3"><img src="/public/res/img/integer_add5.svg" alt="integer subtraction"></div>
+                        </div>
+                      </div>
+                      <h6 class="lh-base">พิจารณานิพจน์ต่อไปนี้</h6>
+                      <h6 class="lh-base">\(2+3=2-(-3)=5\)</h6>
+                      <h6 class="lh-base">\(2+(-3)=2-3=-1\)</h6>
+                      <h6 class="lh-base">\((-2)+(-3)=(-2)-3=-5\)</h6>
+                      <h6 class="lh-base">\((-2)+3=(-2)-(-3)=1\)</h6>
+                      <h6 class="lh-base">จะเห็นว่า เราสามารถเปลี่ยนนิพจน์การลบ ให้เป็นการบวกได้ โดยเปลี่ยนตัวลบให้เป็นตัวผกผันการบวกของตัวลบ แล้วทำการบวกได้เลย</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingSeven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" style="font-size: 0.75em;">
+                      การคูณจำนวนเต็ม
+                    </button>
+                  </h2>
+                  <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">สำหรับการคูณจำนวนเต็ม เราสามารถนำค่าสัมบูรณ์ของทั้งสองจำนวนมาคูณกันแล้วใส่เครื่องหมายตามเงื่อนไขต่อไปนี้</h6>
+                      <h6 class="lh-base">ถ้าทั้งสองจำนวนเป็นจำนวนเต็มบวกทั้งคู่ หรือจำนวนเต็มลบทั้งคู่ เครื่องหมายผลลัพธ์จะเป็นบวก</h6>
+                      <h6 class="lh-base">ถ้าเป็นจำนวนเต็มบวกและจำนวนเต็มลบคูณกัน เครื่องหมายผลลัพธ์จะเป็นลบ</h6>
+                      <h6 class="lh-base">ถ้ามีศูนย์คูณอยู่ด้วย แล้วผลลัพธ์จะเป็น \(0\)</h6>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : \(5\times 4\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(5\times 4=5+5+5+5\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(5\times 4\) </span>\(=20\)</h6>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : \((-5)\times (-4)\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\((-5)\times (-4)=|-5|\times |-4|\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\((-5)\times (-4)\) </span>\(=5\times 4\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\((-5)\times (-4)\) </span>\(=5+5+5+5\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\((-5)\times (-4)\) </span>\(=20\)</h6>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : \((-5)\times 4\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\((-5)\times 4=-(|-5|\times 4)\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\((-5)\times 4\) </span>\(=-(5\times 4)\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\((-5)\times 4\) </span>\(=-(5+5+5+5)\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\((-5)\times 4\) </span>\(=-20\)</h6>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(4\) : \(5\times (-4)\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(5\times (-4)=-(|5|\times |-4|)\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(5\times (-4)\) </span>\(=-(5\times 4)\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(5\times (-4)\) </span>\(=-(5+5+5+5)\)</h6>
+                            <h6 class="lh-base"><span class="opacity-0">\(5\times (-4)\) </span>\(=-20\)</h6>
+                        </div>
+                      </div>
+                      <div class="card my-3 shadow-sm">
+                        <div class="card-header pt-3">
+                          <h6 class="lh-base">ตัวอย่างที่ \(5\) : \(123\times 0\)</h6>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="lh-base">\(123\times 0=0\)</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingEight">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight" style="font-size: 0.75em;">
+                      การหารจำนวนเต็ม
+                    </button>
+                  </h2>
+                  <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <h6 class="lh-base">สำหรับการหารจำนวนเต็ม เราสามารถนำค่าสัมบูรณ์ของทั้งสองจำนวนมาหารกันแล้วใส่เครื่องหมายตามเงื่อนไขต่อไปนี้</h6>
+                        <h6 class="lh-base">ถ้าทั้งสองจำนวนเป็นจำนวนเต็มบวกทั้งคู่ หรือจำนวนเต็มลบทั้งคู่ เครื่องหมายผลลัพธ์จะเป็นบวก</h6>
+                        <h6 class="lh-base">ถ้าเป็นจำนวนเต็มบวกและจำนวนเต็มลบหารกัน เครื่องหมายผลลัพธ์จะเป็นลบ</h6>
+                        <h6 class="lh-base">หากต้องการผลหารให้เป็นจำนวนเต็ม การหารนั้นต้องเป็นการหารลงตัว</h6>
+                        <h6 class="lh-base"><span class="text-secondary">▸ \(0\) หารด้วยจำนวนเต็มใด ๆ หาค่าได้ \(0\)</span></h6>
+                        <h6 class="lh-base"><span class="text-secondary">▸ \(0\) หารจำนวนเต็มใด ๆ หาค่าไม่ได้ จะถือว่าไม่นิยาม</span></h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingNine">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine" style="font-size: 0.75em;">
+                      สมบัติของการบวกและการคูณที่เกี่ยวกับจำนวนเต็ม
+                    </button>
+                  </h2>
+                  <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                      <h6 class="lh-base">กำหนดให้ \(a,b,c\) เป็นจำนวนเต็มใด ๆ</h6>
+                      <h6 class="lh-base">▶ <span class="text-primary">สมบัติการสลับที่ (commutative)</span></h6>
+                      <h6 class="lh-base">\(a+b=b+a\)</h6>
+                      <h6 class="lh-base">\(a\times b=b\times a\)</h6>
+                      <h6 class="lh-base">▶ <span class="text-primary">สมบัติการเปลี่ยนกลุ่ม (associative)</span></h6>
+                      <h6 class="lh-base">\((a+b)+c=a+(b+c)\)</h6>
+                      <h6 class="lh-base">\((a\times b)\times c=a\times (b\times c)\)</h6>
+                      <h6 class="lh-base">▶ <span class="text-primary">สมบัติการแจกแจง (distributive)</span></h6>
+                      <h6 class="lh-base">\(a\times (b+c)=(a\times b)+(a\times c)\)</h6>
+                      <h6 class="lh-base">\((a+b)\times c=(a\times c)+(b\times c)\)</h6>
+                      <h6 class="lh-base">▶ <span class="text-primary">สมบัติการมีเอกลักษณ์ (identity)</span></h6>
+                      <h6 class="lh-base">สำหรับการบวก มี \(0\) เป็นเอกลักษณ์การบวก เพราะ \(a+0=a=0+a\)</h6>
+                      <h6 class="lh-base">สำหรับการคูณ มี \(1\) เป็นเอกลักษณ์การคูณ เพราะ \(a\times 1=a=1\times a\)</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button type="button" class="btn btn-outline-dark mt-4 float-end" disabled>ทำแบบทดสอบ</button>
+              </div>
+            </div>
+            <div class="col-2 d-none d-lg-block">
+            </div>
+        </div>
+        <nav aria-label="Page navigation" class="m-4">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a class="page-link" href="natural_number.html"><span aria-hidden="true">&laquo;</span></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">จำนวนเต็ม</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="fraction.html"><span aria-hidden="true">&raquo;</span></a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="m-4">
+
+        <!-- footer -->
+        <div class="container-fluid bg-dark text-secondary py-3">
+          <div class="row">
+            <div class="col">
+              <h6>MathemaX©2022</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Close Content -->
+    
+
+
+
+
+
+    <script>
+      go.addEventListener("click", ()=>{
+        back.setAttribute("class","d-inline btn btn-warning")
+      })
+      back.addEventListener("click", ()=> {
+        history.back()
+        back.setAttribute("class","d-none btn btn-warning")
+      });
+
+    </script>
+    <script src="/public/res/js/bootstrap.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
+</html>
