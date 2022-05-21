@@ -42,20 +42,10 @@
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
   </head>
-  <body class="bg-light">
-
-
-
-
-
-
-    
+  <body class="position-relative">
     <!-- Start Content -->
-
-      <div class="container-fluid p-0">
-
         <!-- navigation bar -->
-        <nav class="shadow-sm navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container-fluid px-4 py-2">
             <a class="navbar-brand"><h1>MathemaX</h1></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,533 +68,327 @@
         </nav>
         
         <!-- main -->
-        <div class="shadow d-flex justify-content-center bg-white m-3 p-3 rounded-3 border border-1">
+        <main class="d-flex bg-white p-0">
             <div class="col-2 d-none d-lg-block">
+              <nav id="navsidebar" class="sticky-top border-end navbar navbar-light bg-white flex-column align-items-stretch vh-100 overflow-scroll p-3">
+                <nav class="nav nav-pills flex-column">
+                  <a class="nav-link" href="#item-1">จำนวนนับ</a>
+                  <a class="nav-link" href="#item-2">ตัวประกอบของจำนวนนับ</a>
+                  <a class="nav-link" href="#item-3">จำนวนเฉพาะ</a>
+                  <a class="nav-link" href="#item-4">ตัวประกอบเฉพาะ</a>
+                  <a class="nav-link" href="#item-5">จำนวนประกอบ</a>
+                  <a class="nav-link" href="#item-6">การแยกตัวประกอบเฉพาะ</a>
+                  <a class="nav-link" href="#item-7">พหุคูณของจำนวนนับ</a>
+                  <a class="nav-link" href="#item-8">ตัวหารร่วม</a>
+                  <a class="nav-link" href="#item-9">ตัวหารร่วมมาก</a>
+                  <a class="nav-link" href="#item-10">ตัวคูณร่วม</a>
+                  <a class="nav-link" href="#item-11">ตัวคูณร่วมน้อย</a>
+                  <a class="nav-link" href="#item-12">ความสัมพันธ์ระหว่างจำนวนนับสองจำนวน ห.ร.ม. และ ค.ร.น.</a>
+                  <a class="nav-link" href="#item-13">การประยุกต์ของ ห.ร.ม. และ ค.ร.น.</a>
+                </nav>
+              </nav>
             </div>
-            <div class="col p-0">
-              <div class="accordion" id="accordion">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size: 0.75em;">
-                      จำนวนนับ
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6>จำนวนนับ (counting number) หรือจำนวนธรรมชาติ (natural number) หมายถึง จำนวนที่ใช้เพื่อบ่งบอกปริมาณหรือจำนวนของสิ่งต่าง ๆ</h6>
-                      <h6 class="lh-base">หากเราลองนับจำนวนนิ้วมือของเรา เราทราบดีว่าจำนวนนับจำนวนแรก หรือจำนวนนับที่น้อยที่สุด คือ \(1\) โดยจำนวนถัด ๆ ไปจะเพิ่มขึ้นทีละ \(1\) ซึ่งเราสามารถเขียนออกมาให้เป็นรายการได้เป็น \[1,2,3,4,5,6,7,8,9,10,...\] ทั้งนี้เรายังสามารถแบ่งจำนวนนับให้ออกเป็นสองกลุ่มใหญ่ ๆ ได้แก่ </h6>
-                      <h6 class="lh-base ps-3">▶ <span class="text-primary">จำนวนคี่ (odd number)  </span>หมายถึง จำนวนนับที่หารด้วย \(2\) <span class="text-danger">ไม่ลงตัว </span>ได้แก่ \[1,3,5,7,9,11,13,...\]</h6>
-                      <h6 class="lh-base ps-3">▶ <span class="text-primary">จำนวนคู่ (even number) </span>หมายถึง จำนวนนับที่หารด้วย \(2\) <span class="text-danger">  ลงตัว </span>ได้แก่ \[2,4,6,8,10,12,14,...\]</h6>
-                      <h6 class="lh-base">ในการดำเนินการการบวกและการคูณของจำนวนนับ สามารถกระทำได้โดยไม่มีปัญหาเรื่องของจำนวนนับ เพราะการนำจำนวนนับสองจำนวนมาบวกกัน ก็ย่อมได้จำนวนนับ และการนำจำนวนนับสองจำนวนมาคูณกัน ก็ย่อมได้จำนวนนับเช่นกัน</h6>
-                      <h6 class="lh-base">สำหรับการลบ เราต้องกำหนดให้ตัวตั้งมีค่ามากกว่าตัวลบ กล่าวคือ เมื่อกำหนดให้ \(a,b\) เป็นจำนวนนับ, \(a-b\) จะเป็นจำนวนนับ ถ้า \(a>b\)</h6>
-                      <h6 class="lh-base">สำหรับการหาร ผลหารของสองจำนวนนับจะเป็นจำนวนนับ ถ้าการหารนั้นเป็นการหารแบบลงตัว</h6>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : \(3\) และ \(7\) เป็นจำนวนนับ แล้ว \(3+7\) เป็นจำนวนนับด้วยหรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(3+7\) เป็นจำนวนนับ เพราะว่า \(3+7=10\) ซึ่ง \(10\) เป็นจำนวนนับ</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : \(3\) และ \(7\) เป็นจำนวนนับ แล้ว \(7-3\) เป็นจำนวนนับด้วยหรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(7-3\) เป็นจำนวนนับ เพราะว่า \(7-3=4\) ซึ่ง \(4\) เป็นจำนวนนับ</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : \(3\) และ \(7\) เป็นจำนวนนับ แล้ว \(3-7\) เป็นจำนวนนับด้วยหรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(3-7\) ไม่เป็นจำนวนนับ เพราะว่า \(3-7=-4\) ซึ่ง \(-4\) ไม่เป็นจำนวนนับ</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(4\) : \(3\) และ \(7\) เป็นจำนวนนับ แล้ว \(3\times 7\) เป็นจำนวนนับด้วยหรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(3\times 7\) เป็นจำนวนนับ เพราะว่า \(3\times 7=21\) ซึ่ง \(21\) เป็นจำนวนนับ</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(5\) : \(3\) และ \(6\) เป็นจำนวนนับ แล้ว \(6\div 3\) เป็นจำนวนนับด้วยหรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(6\div 3\) เป็นจำนวนนับ เพราะว่า \(6\div 3=2\) ซึ่ง \(2\) เป็นจำนวนนับ</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(6\) : \(3\) และ \(6\) เป็นจำนวนนับ แล้ว \(3\div 6\) เป็นจำนวนนับด้วยหรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(3\div 6\) ไม่เป็นจำนวนนับ เพราะว่า \(3\div 6=\frac{1}{2}\) ซึ่ง \(\frac{1}{2}\) ไม่เป็นจำนวนนับ</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base text-muted">▸ \(1\) หารจำนวนนับใด ๆ ลงตัวเสมอ</h6>
-                    </div>
-                  </div>
+            <div class="col p-4">
+              <h1 class="text-center">จำนวนนับ</h1>
+              <div id="item-1" class="p-3">
+                <h3>จำนวนนับ</h3>
+                <h6 class="lh-base">จำนวนนับ (counting number) หรือจำนวนธรรมชาติ (natural number) หมายถึง จำนวนที่ใช้เพื่อบ่งบอกปริมาณหรือจำนวนของสิ่งต่าง ๆ</h6>
+                <h6 class="lh-base">หากเราลองนับจำนวนนิ้วมือของเรา เราทราบดีว่าจำนวนนับจำนวนแรก หรือจำนวนนับที่น้อยที่สุด คือ \(1\) โดยจำนวนถัด ๆ ไปจะเพิ่มขึ้นทีละ \(1\) ซึ่งเราสามารถเขียนออกมาให้เป็นรายการได้เป็น \[1,2,3,4,5,6,7,8,9,10,...\] ทั้งนี้เรายังสามารถแบ่งจำนวนนับให้ออกเป็นสองกลุ่มใหญ่ ๆ ได้แก่ </h6>
+                <h6 class="lh-base ps-3">▶ <span class="text-primary">จำนวนคี่ (odd number)  </span>หมายถึง จำนวนนับที่หารด้วย \(2\) <span class="text-danger">ไม่ลงตัว </span>ได้แก่ \[1,3,5,7,9,11,13,...\]</h6>
+                <h6 class="lh-base ps-3">▶ <span class="text-primary">จำนวนคู่ (even number) </span>หมายถึง จำนวนนับที่หารด้วย \(2\) <span class="text-danger">  ลงตัว </span>ได้แก่ \[2,4,6,8,10,12,14,...\]</h6>
+                <h6 class="lh-base">ในการดำเนินการการบวกและการคูณของจำนวนนับ สามารถกระทำได้โดยไม่มีปัญหาเรื่องของจำนวนนับ เพราะการนำจำนวนนับสองจำนวนมาบวกกัน ก็ย่อมได้จำนวนนับ และการนำจำนวนนับสองจำนวนมาคูณกัน ก็ย่อมได้จำนวนนับเช่นกัน</h6>
+                <h6 class="lh-base">สำหรับการลบ เราต้องกำหนดให้ตัวตั้งมีค่ามากกว่าตัวลบ กล่าวคือ เมื่อกำหนดให้ \(a,b\) เป็นจำนวนนับ, \(a-b\) จะเป็นจำนวนนับ ถ้า \(a>b\)</h6>
+                <h6 class="lh-base">สำหรับการหาร ผลหารของสองจำนวนนับจะเป็นจำนวนนับ ถ้าการหารนั้นเป็นการหารแบบลงตัว</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(1\) : \(3\) และ \(7\) เป็นจำนวนนับ แล้ว \(3+7\) เป็นจำนวนนับด้วยหรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(3+7\) เป็นจำนวนนับ เพราะว่า \(3+7=10\) ซึ่ง \(10\) เป็นจำนวนนับ</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo" style="scroll-margin-top: 200px;">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 0.75em;">
-                      ตัวประกอบของจำนวนนับ
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">ถ้าให้ \(a,b\) เป็นจำนวนนับ โดยที่ \(a\) หาร \(b\) ลงตัว (\(b\) หารด้วย \(a\) ลงตัว)</h6>
-                      <h6 class="lh-base">\(a\) เป็นตัวประกอบ (factor) หนึ่งของ \(b\) เพราะ \(a\) หาร \(b\) ลงตัว</h6>
-                      <h6 class="lh-base">นั่นคือ ตัวประกอบของจำนวนนับ \(a\) ใด ๆ คือ จำนวนนับที่หาร \(a\) ลงตัว</h6>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาตัวประกอบทั้งหมดของ \(12\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(1,2,3,4,6,12\) เพราะว่าจำนวนเหล่านี้หาร \(12\) ลงตัว</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : \(9\) เป็นตัวประกอบของ \(72\) หรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(9\) เป็นตัวประกอบของ \(72\) เพราะว่า \(9\) หาร \(12\) ลงตัว</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : \(11\) เป็นตัวประกอบของ \(111\) หรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(11\) ไม่เป็นตัวประกอบของ \(111\) เพราะว่า \(11\) หาร \(111\) ไม่ลงตัว</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base text-muted">▸ ตัวประกอบ เป็นตัวหาร (divisor) ที่หารตัวตั้งลงตัว</h6>
-                    </div>
-                  </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(2\) : \(3\) และ \(7\) เป็นจำนวนนับ แล้ว \(7-3\) เป็นจำนวนนับด้วยหรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(7-3\) เป็นจำนวนนับ เพราะว่า \(7-3=4\) ซึ่ง \(4\) เป็นจำนวนนับ</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="font-size: 0.75em;">
-                      จำนวนเฉพาะ
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">ถ้าให้ \(p\) เป็นจำนวนนับที่มีตัวประกอบทั้งหมดเพียงสองจำนวน ได้แก่ \(1,p\) แล้ว \(p\) เป็นจำนวนเฉพาะ (prime number)</h6>
-                      <h6 class="lh-base">นั่นคือ จำนวนนับใด ๆ ที่มีตัวประกอบทั้งหมดสองจำนวน ได้แก่ \(1\) และตัวมันเอง จะเรียกว่า จำนวนเฉพาะ</h6>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : \(11\) เป็นจำนวนเฉพาะหรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(11\) เป็นจำนวนเฉพาะ เพราะว่า \(11\) มีตัวประกอบเพียงสองจำนวน ได้แก่ \(1,11\)</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : \(15\) เป็นจำนวนเฉพาะหรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(15\) ไม่เป็นจำนวนเฉพาะ เพราะว่า \(15\) มีตัวประกอบมากกว่าสองจำนวน ได้แก่ \(1,3,5,15\)</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base text-muted">▸ \(1\) ไม่เป็นจำนวนเฉพาะ เพราะมีตัวประกอบเพียงจำนวนเดียว</h6>
-                      <h6 class="lh-base text-muted">▸ \(2\) เป็นจำนวนคู่เพียงจำนวนเดียวที่เป็นจำนวนเฉพาะ</h6>
-                    </div>
-                  </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(3\) : \(3\) และ \(7\) เป็นจำนวนนับ แล้ว \(3-7\) เป็นจำนวนนับด้วยหรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(3-7\) ไม่เป็นจำนวนนับ เพราะว่า \(3-7=-4\) ซึ่ง \(-4\) ไม่เป็นจำนวนนับ</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="font-size: 0.75em;">
-                      ตัวประกอบเฉพาะ
-                    </button>
-                  </h2>
-                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">ตัวประกอบเฉพาะ (prime factor) หมายถึง ตัวประกอบที่เป็นจำนวนเฉพาะ</h6>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาตัวประกอบเฉพาะของ \(12\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(12\) มีตัวประกอบ ได้แก่ \(1,2,3,4,6,12\) ซึ่งมี \(2,3\) เป็นจำนวนเฉพาะ</h6>
-                          <h6 class="lh-base">ดังนั้น \(12\) มีตัวประกอบเฉพาะ ได้แก่ \(2,3\)</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาตัวประกอบเฉพาะของ \(13\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(13\) มีตัวประกอบ ได้แก่ \(1,13\) ซึ่งมี \(13\) เป็นจำนวนเฉพาะ</h6>
-                          <h6 class="lh-base">ดังนั้น \(13\) มีตัวประกอบเฉพาะ ได้แก่ \(13\)</h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(4\) : \(3\) และ \(7\) เป็นจำนวนนับ แล้ว \(3\times 7\) เป็นจำนวนนับด้วยหรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(3\times 7\) เป็นจำนวนนับ เพราะว่า \(3\times 7=21\) ซึ่ง \(21\) เป็นจำนวนนับ</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingFive">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="font-size: 0.75em;">
-                      จำนวนประกอบ
-                    </button>
-                  </h2>
-                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">จำนวนนับที่มีตัวประกอบทั้งหมดมากกว่าสองจำนวนขึ้นไป จะเรียกว่า จำนวนประกอบ (composite number)</h6>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่าง : \(14\) เป็นจำนวนประกอบหรือจำนวนเฉพาะ</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(14\) เป็นจำนวนประกอบ เพราะมีตัวประกอบมากกว่าสองจำนวน ได้แก่ \(1,2,7,14\)</h6>
-                          <h6 class="lh-base">ดังนั้น \(14\) เป็นจำนวนประกอบ</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base text-muted">▸ \(1\) ไม่เป็นจำนวนประกอบ เพราะมีตัวประกอบเพียงจำนวนเดียว</h6>
-                    </div>
-                  </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(5\) : \(3\) และ \(6\) เป็นจำนวนนับ แล้ว \(6\div 3\) เป็นจำนวนนับด้วยหรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(6\div 3\) เป็นจำนวนนับ เพราะว่า \(6\div 3=2\) ซึ่ง \(2\) เป็นจำนวนนับ</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingSix">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="font-size: 0.75em;">
-                      การแยกตัวประกอบเฉพาะ
-                    </button>
-                  </h2>
-                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">จำนวนนับทุกจำนวนที่ไม่ใช่ \(1\) สามารถทำให้อยู่ในรูปการคูณของตัวประกอบเฉพาะ โดยที่แต่ละจำนวนจะมีรูปแบบการคูณที่เป็นเฉพาะของตัวมันเอง ซึ่งเรียกว่า การแยกตัวประกอบเฉพาะ (prime factorization) ของจำนวนนับ</h6>
-                      <h6 class="lh-base">สำหรับวิธีการแยกตัวประกอบแบบเป็นขั้นตอน เราจะทำการหารจำนวนนั้นด้วยจำนวนเฉพาะที่หารลงตัว (หรือหารด้วยตัวประกอบเฉพาะ) แล้วหารผลลัพธ์ใหม่แบบเดิมจนกว่าจะได้ผลหารเป็น \(1\)</h6>
-                      <h6 class="lh-base">โดยเราจะเริ่มหารจากจำนวนเฉพาะที่น้อยที่สุดที่เป็นไปได้ก่อน (เราสามารถหารด้วยจำนวนใดก่อนก็ได้ แต่ในที่นี้จะแสดงให้เห็นเป็นขั้นตอนที่เป็นระเบียบ)</h6>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่าง : จงแยกตัวประกอบของ \(50\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="text-center"><img src="/public/res/img/natural_number_fctz1.svg" alt="prime factorization by division"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(6\) : \(3\) และ \(6\) เป็นจำนวนนับ แล้ว \(3\div 6\) เป็นจำนวนนับด้วยหรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(3\div 6\) ไม่เป็นจำนวนนับ เพราะว่า \(3\div 6=\dfrac{1}{2}\) ซึ่ง \(\dfrac{1}{2}\) ไม่เป็นจำนวนนับ</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingSeven">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" style="font-size: 0.75em;">
-                      พหุคูณของจำนวนนับ
-                    </button>
-                  </h2>
-                  <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">จาก <a href="#headingTwo">ตัวประกอบของจำนวนนับ</a> เราทราบว่าตัวหารที่หารตัวตั้ง (dividend) ลงตัว คือ ตัวประกอบ</h6>
-                      <h6 class="lh-base">ในทางกลับกัน เราจะเรียกตัวตั้งตัวนั้น ว่าเป็นพหุคูณ (multiple) หนึ่งของตัวหารตัวนั้น</h6>
-                      <h6 class="lh-base">นั่นคือ พหุคูณของจำนวนนับ \(a\) ใด ๆ คือ จำนวนนับที่หารด้วย \(a\) ลงตัว</h6>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : \(6\) เป็นพหุคูณของ \(3\) หรือไม่</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(6\) เป็นพหุคูณของ \(3\) เพราะ \(6\) หารด้วย \(3\) ลงตัว</h6>
-                          <h6 class="lh-base">ดังนั้น \(6\) เป็นพหุคูณของ \(3\)</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base">อย่างไรก็ตาม เราไม่สามารถหาพหุคูณทั้งหมดได้ เพราะจำนวนนับมีเป็นอนันต์</h6>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาพหุคูณทั้งหมดของ \(2\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">\(2,4,6,8,10,12,14,...\) เป็นพหุคูณทั้งหมดของ \(2\) เพราะจำนวนเหล่านี้หารด้วย \(2\) ลงตัว</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base text-muted">▸ พหุคูณ มีอีกชื่อหนึ่งเรียกว่า ตัวคูณ</h6>
-                    </div>
-                  </div>
+                <h6 class="lh-base text-muted">▸ \(1\) หารจำนวนนับใด ๆ ลงตัวเสมอ</h6>
+              </div>
+
+              <div id="item-2" class="p-3">
+                <h3>ตัวประกอบของจำนวนนับ</h3>
+                <h6 class="lh-base">ถ้าให้ \(a,b\) เป็นจำนวนนับ โดยที่ \(a\) หาร \(b\) ลงตัว (\(b\) หารด้วย \(a\) ลงตัว)</h6>
+                <h6 class="lh-base">\(a\) เป็นตัวประกอบ (factor) หนึ่งของ \(b\) เพราะ \(a\) หาร \(b\) ลงตัว</h6>
+                <h6 class="lh-base">นั่นคือ ตัวประกอบของจำนวนนับ \(a\) ใด ๆ คือ จำนวนนับที่หาร \(a\) ลงตัว</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาตัวประกอบทั้งหมดของ \(12\)</h6>
+                  <h6 class="lh-base ps-5">\(1,2,3,4,6,12\) เพราะว่าจำนวนเหล่านี้หาร \(12\) ลงตัว</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingEight">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight" style="font-size: 0.75em;">
-                      ตัวหารร่วม
-                    </button>
-                  </h2>
-                  <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">ตัวหารร่วม (common divisor) คือ ตัวหารที่หารจำนวนนับตั้งแต่สองจำนวนขึั้นไปที่แตกต่างกันได้ลงตัวพร้อมกัน</h6>
-                      <h6 class="lh-base">พิจารณาตัวหารหรือตัวประกอบของ \(12\) และ \(30\) ได้เป็นดังนี้</h6>
-                      <div class="card my-3">
-                        <div class="card-body pt-3">
-                          <h6 class="lh-base">ตัวหารของ \(12\) ได้แก่ \(1,2,3,4,6,12\)</h6>
-                          <h6 class="lh-base">ตัวหารของ \(30\) ได้แก่ \(1,2,3,5,6,10,15,30\)</h6>
-                          <h6 class="lh-base">จะสังเกตเห็นได้ว่า ตัวหารที่เหมือนกันของทั้งสองจำนวน ได้แก่ \(1,2,3,6\)</h6>
-                          <h6 class="lh-base">ดังนั้น จะได้ว่า ตัวหารร่วมของ \(12\) และ \(30\) ได้แก่ \(1,2,3,6\)</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base">หากนำจำนวนเหล่านี้ไปหาร \(12\) และ \(30\) จะพบว่าหารได้ลงตัวทั้งหมด</h6>
-                      <h6 class="lh-base">เพื่อให้เข้าใจยิ่งขึ้น ลองพิจารณาตัวหารของ \(4, 9\) และ \(12\)</h6>
-                      <div class="card my-3">
-                        <div class="card-body pt-3">
-                          <h6 class="lh-base">ตัวหารของ \(4\) ได้แก่ \(1,2,4\)</h6>
-                          <h6 class="lh-base">ตัวหารของ \(9\) ได้แก่ \(1,3,9\)</h6>
-                          <h6 class="lh-base">ตัวหารของ \(12\) ได้แก่ \(1,2,3,4,6,12\)</h6>
-                          <h6 class="lh-base">จะสังเกตเห็นได้ว่า ตัวหารที่เหมือนกันของทั้งสามจำนวน ได้แก่ \(1\)</h6>
-                          <h6 class="lh-base">ดังนั้น จะได้ว่า ตัวหารร่วมของ \(4, 9\) และ \(12\) ได้แก่ \(1\)</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base text-muted">▸ หากจำนวนนับที่นำมาหาตัวหารร่วมเป็นจำนวนเฉพาะทั้งหมด จะมีเพียงแค่ \(1\) ที่เป็นตัวหารร่วม</h6>
-                      <h6 class="lh-base text-muted">▸ หากจำนวนนับที่นำมาหาตัวหารร่วมมี \(1\) รวมอยู่ จะมีเพียงแค่ \(1\) ที่เป็นตัวหารร่วม</h6>
-                    </div>
-                  </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(2\) : \(9\) เป็นตัวประกอบของ \(72\) หรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(9\) เป็นตัวประกอบของ \(72\) เพราะว่า \(9\) หาร \(12\) ลงตัว</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingNine">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine" style="font-size: 0.75em;">
-                      ตัวหารร่วมมาก
-                    </button>
-                  </h2>
-                  <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">ตัวหารร่วมมาก หรือ ห.ร.ม. (greatest common divisor : gcd) คือ ตัวหารร่วมของจำนวนนับตั้งแต่สองจำนวนขึ้นไปที่มากที่สุด</h6>
-                      <h6 class="lh-base">พิจารณาตัวหารหรือตัวประกอบของ \(12\) และ \(30\) ได้เป็นดังนี้</h6>
-                      <div class="card my-3">
-                        <div class="card-body pt-3">
-                          <h6 class="lh-base">ตัวหารของ \(12\) ได้แก่ \(1,2,3,4,6,12\)</h6>
-                          <h6 class="lh-base">ตัวหารของ \(30\) ได้แก่ \(1,2,3,5,6,10,15,30\)</h6>
-                          <h6 class="lh-base">จะได้ว่า ตัวหารร่วมของ \(12\) และ \(30\) ได้แก่ \(1,2,3,6\)</h6>
-                          <h6 class="lh-base">และพบว่า ตัวหารร่วมที่มากที่สุด คือ \(6\)</h6>
-                          <h6 class="lh-base">ดังนั้น ห.ร.ม. ของ \(12\) และ \(30\) คือ \(6\)</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base">เรายังสามารถใช้เทคนิคการหารเพื่อหา ห.ร.ม. ได้ โดยมีขั้นตอนดังนี้</h6>
-                      <div class="card mb-2">
-                        <div class="card-body">
-                          <h6 class="lh-base">\(1.\) หารจำนวนเหล่านั้้นพร้อมกันด้วยจำนวนเฉพาะที่หารลงตัวได้ทั้งหมด</h6>
-                          <h6 class="lh-base">\(2.\) ทำซ้ำข้อ \(1.\) โดยให้ผลลัพธ์เป็นตัวตั้งหาร</h6>
-                          <h6 class="lh-base">\(3.\) เมื่อหารต่อไม่ได้แล้ว ให้นำตัวหารที่ได้ทั้งหมดมาคูณกัน ซึ่งผลลัพธ์จะเป็น ห.ร.ม.</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหา ห.ร.ม. ของ \(24\) และ \(32\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="text-center"><img src="/public/res/img/natural_number_gcd1.svg" alt="gcd by division"></div>
-                          <h6 class="lh-base">ดังนั้น ห.ร.ม. ของ \(24\) และ \(32\) เป็น \(8\)</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหา ห.ร.ม. ของ \(30,45\) และ \(60\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="text-center"><img src="/public/res/img/natural_number_gcd2.svg" alt="gcd by division"></div>
-                          <h6 class="lh-base">ดังนั้น ห.ร.ม. ของ \(30,45\) และ \(60\) เป็น \(15\)</h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(3\) : \(11\) เป็นตัวประกอบของ \(111\) หรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(11\) ไม่เป็นตัวประกอบของ \(111\) เพราะว่า \(11\) หาร \(111\) ไม่ลงตัว</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTen">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen" style="font-size: 0.75em;">
-                      ตัวคูณร่วม
-                    </button>
-                  </h2>
-                  <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">ตัวคูณร่วม (common multiple) คือ ตัวคูณที่หารด้วยจำนวนนับตั้งแต่สองจำนวนขึั้นไปที่แตกต่างกันได้ลงตัวพร้อมกัน</h6>
-                      <h6 class="lh-base">พิจารณาตัวคูณหรือพหุคูณของ \(6\) และ \(9\) ได้เป็นดังนี้</h6>
-                      <div class="card my-3">
-                        <div class="card-body pt-3">
-                          <h6 class="lh-base">ตัวคูณของ \(6\) ได้แก่ \(6,12,18,24,30,36,...\)</h6>
-                          <h6 class="lh-base">ตัวคูณของ \(9\) ได้แก่ \(9,18,27,36,45,54,...\)</h6>
-                          <h6 class="lh-base">จะสังเกตเห็นได้ว่า ตัวคูณที่เหมือนกันของทั้งสองจำนวน ได้แก่ \(18,36,54,72,...\)</h6>
-                          <h6 class="lh-base">ดังนั้น จะได้ว่า ตัวคูณร่วมของ \(6\) และ \(9\) ได้แก่ \(18,36,54,72,...\)</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base">หากนำจำนวนเหล่านี้ไปหารด้วย \(6\) และ \(9\) จะพบว่าหารได้ลงตัวทั้งหมด</h6>
-                      <h6 class="lh-base">เพื่อให้เข้าใจยิ่งขึ้น ลองพิจารณาตัวคูณของ \(2, 3\) และ \(5\)</h6>
-                      <div class="card my-3">
-                        <div class="card-body pt-3">
-                          <h6 class="lh-base">ตัวคูณของ \(2\) ได้แก่ \(2,4,6,8,10,...,30,...\)</h6>
-                          <h6 class="lh-base">ตัวคูณของ \(3\) ได้แก่ \(3,6,9,12,15,...,30,...\)</h6>
-                          <h6 class="lh-base">ตัวคูณของ \(5\) ได้แก่ \(5,10,15,20,25,30,35,...\)</h6>
-                          <h6 class="lh-base">จะสังเกตเห็นได้ว่า ตัวคูณที่เหมือนกันของทั้งสามจำนวน ได้แก่ \(30,60,90,...\)</h6>
-                          <h6 class="lh-base">ดังนั้น จะได้ว่า ตัวหารคูณของ \(2, 3\) และ \(5\) ได้แก่ \(30,60,90,...\)</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base text-muted">▸ หากจำนวนนับที่นำมาหาตัวคูณร่วมเป็นจำนวนเฉพาะทั้งหมด รูปแบบของตัวคูณร่วมหาได้จากพหุคูณของผลคูณของจำนวนเฉพาะเหล่านั้น</h6>
-                    </div>
-                  </div>
+                <h6 class="lh-base text-muted">▸ ตัวประกอบ เป็นตัวหาร (divisor) ที่หารตัวตั้งลงตัว</h6>
+              </div>
+
+              <div id="item-3" class="p-3">
+                <h3>จำนวนเฉพาะ</h3>
+                <h6 class="lh-base">ถ้าให้ \(p\) เป็นจำนวนนับที่มีตัวประกอบทั้งหมดเพียงสองจำนวน ได้แก่ \(1,p\) แล้ว \(p\) เป็นจำนวนเฉพาะ (prime number)</h6>
+                <h6 class="lh-base">นั่นคือ จำนวนนับใด ๆ ที่มีตัวประกอบทั้งหมดสองจำนวน ได้แก่ \(1\) และตัวมันเอง จะเรียกว่า จำนวนเฉพาะ</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(1\) : \(11\) เป็นจำนวนเฉพาะหรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(11\) เป็นจำนวนเฉพาะ เพราะว่า \(11\) มีตัวประกอบเพียงสองจำนวน ได้แก่ \(1,11\)</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingEleven">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven" style="font-size: 0.75em;">
-                      ตัวคูณร่วมน้อย
-                    </button>
-                  </h2>
-                  <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">ตัวคูณร่วมน้อย หรือ ค.ร.น. (least common multiple : lcm) คือ ตัวคูณร่วมของจำนวนนับตั้งแต่สองจำนวนขึ้นไปที่น้อยที่สุด</h6>
-                      <h6 class="lh-base">พิจารณาตัวคูณหรือพหุคูณของ \(6\) และ \(9\) ได้เป็นดังนี้</h6>
-                      <div class="card my-3">
-                        <div class="card-body pt-3">
-                          <h6 class="lh-base">ตัวคูณของ \(6\) ได้แก่ \(6,12,18,24,30,36,...\)</h6>
-                          <h6 class="lh-base">ตัวคูณของ \(9\) ได้แก่ \(9,18,27,36,45,54,...\)</h6>
-                          <h6 class="lh-base">จะได้ว่า ตัวคูณร่วมของ \(6\) และ \(9\) ได้แก่ \(18,36,54,72,...\)</h6>
-                          <h6 class="lh-base">และพบว่า ตัวคูณร่วมที่น้อยที่สุด คือ \(18\)</h6>
-                          <h6 class="lh-base">ดังนั้น ค.ร.น. ของ \(6\) และ \(9\) คือ \(18\)</h6>
-                        </div>
-                      </div>
-                      <h6 class="lh-base">เรายังสามารถใช้เทคนิคการหารเพื่อหา ค.ร.น. ได้ โดยมีขั้นตอนดังนี้</h6>
-                      <div class="card mb-2">
-                        <div class="card-body">
-                          <h6 class="lh-base">\(1.\) หารจำนวนเหล่านั้้นพร้อมกันด้วยจำนวนเฉพาะที่หารลงตัวได้ทั้งหมด</h6>
-                          <h6 class="lh-base">\(2.\) ทำซ้ำข้อ \(1.\) โดยให้ผลลัพธ์เป็นตัวตั้งหาร</h6>
-                          <h6 class="lh-base">\(3.\) หากไม่มีจำนวนเฉพาะที่หารจำนวนทั้งหมดได้แล้ว ให้หารด้วยจำนวนเฉพาะที่หารจำนวนเหล่านั้นลงตัวอย่างน้อยสองจำนวน</h6>
-                          <h6 class="lh-base">\(4.\) ทำซ้ำข้อ \(3.\) โดยให้ผลลัพธ์เป็นตัวตั้งหาร</h6>
-                          <h6 class="lh-base">\(5.\) เมื่อหารต่อไม่ได้แล้ว ให้นำตัวหารที่ได้และผลลัพธ์สุดท้ายทั้งหมดมาคูณกัน ซึ่งผลลัพธ์จะเป็น ค.ร.น.</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหา ค.ร.น. ของ \(8,14\) และ \(24\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="text-center"><img src="/public/res/img/natural_number_lcm1.svg" alt="lcm by division"></div>
-                          <h6 class="lh-base">ดังนั้น ค.ร.น. ของ \(8,14\) และ \(24\) เป็น \(168\)</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหา ค.ร.น. ของ \(2,3,5\) และ \(6\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <div class="text-center"><img src="/public/res/img/natural_number_lcm2.svg" alt="lcm by division"></div>
-                          <h6 class="lh-base">ดังนั้น ค.ร.น. ของ \(2,3,5\) และ \(6\) เป็น \(30\)</h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(2\) : \(15\) เป็นจำนวนเฉพาะหรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(15\) ไม่เป็นจำนวนเฉพาะ เพราะว่า \(15\) มีตัวประกอบมากกว่าสองจำนวน ได้แก่ \(1,3,5,15\)</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwelve">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve" style="font-size: 0.75em;">
-                      ความสัมพันธ์ระหว่างจำนวนนับสองจำนวน ห.ร.ม. และ ค.ร.น.
-                    </button>
-                  </h2>
-                  <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <h6 class="lh-base">พิจารณา ห.ร.ม. และ ค.ร.น. ของ \(36\) และ \(48\)</h6>
-                      <div class="text-center mb-2"><img src="/public/res/img/natural_number_ngl1.svg" alt="gcd and lcm"></div>
-                      <h6 class="lh-base">พิจารณาผลคูณของ \(36\) และ \(48\) ได้เป็น \(36\times48=1728\)</h6>
-                      <h6 class="lh-base">และพิจารณาผลคูณของ ห.ร.ม. และ ค.ร.น. ของ \(36\) และ \(48\) ได้เป็น \(12\times144=1728\)</h6>
-                      <h6 class="lh-base">จะสังเกตเห็นได้ว่า ผลคูณทั้งสองมีค่าเท่ากัน ทำให้ได้ว่า</h6>
-                      <h6 class="lh-base">ผลคูณของสองจำนวนนับใด ๆ มีค่าเท่ากับผลคูณของ ห.ร.ม. และ ค.ร.น. ของสองจำนวนนับนั้น</h6>
-                      <h6 class="lh-base">ถ้าให้ \(a,b\) แทนจำนวนนับใด ๆ</h6>
-                      <h6 class="lh-base">\(gcd(a,b)\) แทน ห.ร.ม. ของ \(a\) และ \(b\)</h6>
-                      <h6 class="lh-base">\(lcm(a,b)\) แทน ค.ร.น. ของ \(a\) และ \(b\)</h6>
-                      <h6 class="lh-base">แล้ว \(a\times b = gcd(a,b)\times lcm(a,b)\)</h6>
-                    </div>
-                  </div>
+                <h6 class="lh-base text-muted">▸ \(1\) ไม่เป็นจำนวนเฉพาะ เพราะมีตัวประกอบเพียงจำนวนเดียว</h6>
+                <h6 class="lh-base text-muted">▸ \(2\) เป็นจำนวนคู่เพียงจำนวนเดียวที่เป็นจำนวนเฉพาะ</h6>
+              </div>
+
+              <div id="item-4" class="p-3">
+                <h3>ตัวประกอบเฉพาะ</h3>
+                <h6 class="lh-base">ตัวประกอบเฉพาะ (prime factor) หมายถึง ตัวประกอบที่เป็นจำนวนเฉพาะ</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาตัวประกอบเฉพาะของ \(12\)</h6>
+                  <h6 class="lh-base ps-5">\(12\) มีตัวประกอบ ได้แก่ \(1,2,3,4,6,12\) ซึ่งมี \(2,3\) เป็นจำนวนเฉพาะ</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น \(12\) มีตัวประกอบเฉพาะ ได้แก่ \(2,3\)</h6>
                 </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThirteen">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen" style="font-size: 0.75em;">
-                      การประยุกต์ของ ห.ร.ม. และ ค.ร.น.
-                    </button>
-                  </h2>
-                  <div id="collapseThirteen" class="accordion-collapse collapse" aria-labelledby="headingThirteen" data-bs-parent="#accordion">
-                    <div class="accordion-body">
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาจำนวนนับที่มากที่สุดที่หาร \(25\) และหาร \(49\) เหลือเศษเป็น \(1\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">หากนำเศษ \(1\) ไปลบออกจาก \(25\) และ \(49\) จะได้ \(24\) และ \(48\) และหากหา ห.ร.ม. ของ \(24\) และ \(48\) จะได้ ห.ร.ม. เป็น \(24\)</h6>
-                          <h6 class="lh-base">ซึ่ง ห.ร.ม. ที่ได้นี้ เมื่อนำไปหาร \(25\) และ \(49\) จะพบว่าเหลือเศษเป็น \(1\) ทั้งคู่</h6>
-                          <h6 class="lh-base">ดังนั้น จำนวนนับที่มากที่สุดที่หาร \(25\) และ \(49\) เหลือเศษ \(1\) คือ \(24\) นั่นเอง</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาจำนวนนับที่มากที่สุดที่หาร \(47\) เหลือเศษเป็น \(2\) และหาร \(49\) เหลือเศษเป็น \(1\)</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">เช่นเดียวกับตัวอย่างที่ \(1\) เพียงแต่เศษแตกต่างกัน ให้นำเศษของแต่ละจำนวนมาลบ แล้วหา ห.ร.ม.</h6>
-                          <h6 class="lh-base">ซึ่งเมื่อนำเศษมาลบออกแล้วจะได้เป็น \(45\) และ \(48\)</h6>
-                          <h6 class="lh-base">แล้วหา ห.ร.ม. ออกมาได้เป็น \(3\)</h6>
-                          <h6 class="lh-base">ดังนั้น จำนวนนับที่มากที่สุดที่หาร \(47\) เหลือเศษเป็น \(2\) และหาร \(49\) เหลือเศษเป็น \(1\) คือ \(3\)</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(3\) : จงหาจำนวนนับที่มากที่สุดที่หาร \(28,38\) และ \(58\) เหลือเศษเท่ากัน</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">จากโจทย์เราไม่ทราบแน่ชัดว่าเศษเป็นตัวใด เพียงแต่รู้ว่าเท่ากัน</h6>
-                          <h6 class="lh-base">หากลองหาผลต่างจำนวนเหล่านั้นทั้งสามจำนวน (นับเฉพาะผลต่างที่เป็นบวก) แล้วนำมาหา ห.ร.ม. ก็ยังคงเป็นผลลัพธ์ของปัญหานี้ด้วย การทำเช่นนี้จะทำให้ตัวเศษหายไป เพราะการนำสองจำนวนที่มีเศษเท่ากันมาลบกัน ย่อมเสมือนการลบเศษออกไปด้วย</h6>
-                          <h6 class="lh-base">เราจะได้ผลต่างทั้งสามแบบ ได้ดังนี้</h6>
-                          <h6 class="lh-base">\(38-28 = 10\)</h6>
-                          <h6 class="lh-base">\(58-38 = 20\)</h6>
-                          <h6 class="lh-base">\(58-28 = 30\)</h6>
-                          <h6 class="lh-base">จากนั้นเราจะหา ห.ร.ม. ของทั้งสามผลต่าง ซึ่งได้เป็น \(10\)</h6>
-                          <h6 class="lh-base">ดังนั้น จำนวนนับที่มากที่สุดที่หาร \(28,38\) และ \(58\) เหลือเศษเท่ากัน คือ \(10\)</h6>
-                          <h6 class="lh-base">นอกจากนี้ ยังทำให้เราทราบว่า เศษที่เท่ากันเหล่านั้น คือ \(8\) อีกด้วย</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(4\) : ไอซ์มีปากกาสีแดง \(21\) ด้าม มีปากกาสีน้ำเงิน \(28\) ด้าม และมีปากกาสีดำ \(14\) ด้าม ไอซ์ต้องการแบ่งปากกาใส่กล่องของที่ระลึก โดยแต่ละกล่องเป็นสีเดียวกัน และแบ่งทุกกล่องให้มีจำนวนปากกามากที่สุดและมีเท่า ๆ กัน ไอซ์จะแบ่งใส่แต่ละกล่องได้กี่ด้าม</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">จากโจทย์ต้องการหาจำนวนปากกาในแต่ละกล่องให้มากที่สุด โดยแบ่งเท่า ๆ กัน แบบไม่ผสมสีกัน เป็นรูปแบบโจทย์ของการหา ห.ร.ม. ซึ่งแต่ละจำนวนคือจำนวนปากกา</h6>
-                          <h6 class="lh-base">ทำการหา ห.ร.ม. ของ \(21,28\) และ \(14\) ซึ่งได้เป็น \(7\)</h6>
-                          <h6 class="lh-base">ดังนั้น ไอซ์จะแบ่งใส่แต่ละกล่องได้ \(7\) ด้าม</h6>
-                          <h6 class="lh-base">นอกจากนี้ ยังทำให้เราทราบว่า แต่ละสีแบ่งใส่ได้กี่กล่อง โดยนำ \(7\) ไปหาร \(21,28\) และ \(14\) ทำให้ได้ว่า</h6>
-                          <h6 class="lh-base">ปากกาสีแดงแบ่งได้ \(3\) กล่อง</h6>
-                          <h6 class="lh-base">ปากกาสีน้ำเงินแบ่งได้ \(4\) กล่อง</h6>
-                          <h6 class="lh-base">ปากกาสีดำแบ่งได้ \(2\) กล่อง</h6>
-                          <h6 class="lh-base text-muted">▸ หากทำโดยวิธีการหารจะมองออกได้ง่ายกว่า ไม่ต้องหารอีกรอบ</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(5\) : จงหาจำนวนนับที่น้อยที่สุดที่หารด้วย \(10,12\) และ \(16\) เหลือเศษ \(3\) เท่ากัน</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">จากโจทย์ต้องการหาจำนวนนับที่น้อยที่สุด โดยหากไม่คิดเศษก่อน (เหลือเศษ \(0\) หรือหารลงตัว) ก็หมายถึงการหา ค.ร.น. หากเพิ่มเศษเข้าไปหลังจากนั้น แล้วนำไปหารก็จะพบว่าเหลือเศษเท่านั้นจริง</h6>
-                          <h6 class="lh-base">ทำการหา ค.ร.น. ของ \(10,12\) และ \(16\) ซึ่งได้เป็น \(240\)</h6>
-                          <h6 class="lh-base">แล้วเพิ่มเศษเข้าไป จะได้ \(240 + 3 = 243\)</h6>
-                          <h6 class="lh-base">ดังนั้น จำนวนนับที่น้อยที่สุดที่หารด้วย \(10,12\) และ \(16\) เหลือเศษ \(3\) เท่ากัน คือ \(243\) นั่นเอง</h6>
-                        </div>
-                      </div>
-                      <div class="card my-3 shadow-sm">
-                        <div class="card-header pt-3">
-                          <h6 class="lh-base">ตัวอย่างที่ \(6\) : แก้ว แหวน เงิน ทอง ไปเที่ยวสวนสนุกด้วยกัน แล้วพบชิงช้าสวรรค์ยักษ์สี่ตัวที่หมุนไม่พร้อมกัน จึงนึกสนุกชวนกันมาจับเวลาที่ชิงช้าสวรรค์แต่ละตัวใช้ในการหมุนหนึ่งรอบ โดยแก้วจับเวลาตัวแรกใช้เวลา \(6\) นาที แหวนจับเวลาตัวที่สองใช้เวลา \(8\) นาที เงินจับเวลาตัวที่สามใช้เวลา \(10\) นาที และทองจับเวลาตัวที่สี่ใช้เวลา \(12\) นาที อยู่ ๆ ครูด๋อย ครูสอนคณิตศาสตร์ของทั้งสี่คนมาเห็น จึงให้ทั้งสี่หาว่าถ้าเริ่มหมุนพร้อมกันที่จุดขึ้น แล้วอีกกี่นาทีที่จะถึง ที่ทั้งสี่ตัวจะพบกันที่จุดขึ้นเดิมอีกครั้ง โดยชิงช้าสวรรค์ไม่หยุดหลังจากเริ่มหมุน จงช่วยทั้งสี่คนตอบคำถาม</h6>
-                        </div>
-                        <div class="card-body">
-                          <h6 class="lh-base">จากโจทย์ต้องการหาเวลาที่จะถึง คือ เวลาที่น้อยที่สุดที่ชิงช้าสวรรค์ทั้งสี่ตัว จะมาเจอกันที่จุดเดิมอีกครั้ง ซึ่งเป็นรูปแบบของการหา ค.ร.น.</h6>
-                          <h6 class="lh-base">ทำการหา ค.ร.น. ของ \(6,8,10\) และ \(12\) ซึ่งได้เป็น \(120\)</h6>
-                          <h6 class="lh-base">นั่นคือ เวลาที่น้อยที่สุดที่ชิงช้าสวรรค์ทั้งสี่ตัว จะมาเจอกันที่จุดเดิมอีกครั้ง คือ อีก \(120\) นาที หลังจากหมุน</h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาตัวประกอบเฉพาะของ \(13\)</h6>
+                  <h6 class="lh-base ps-5">\(13\) มีตัวประกอบ ได้แก่ \(1,13\) ซึ่งมี \(13\) เป็นจำนวนเฉพาะ</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น \(13\) มีตัวประกอบเฉพาะ ได้แก่ \(13\)</h6>
                 </div>
               </div>
+
+              <div id="item-5" class="p-3">
+                <h3>จำนวนประกอบ</h3>
+                <h6 class="lh-base">จำนวนนับที่มีตัวประกอบทั้งหมดมากกว่าสองจำนวนขึ้นไป จะเรียกว่า จำนวนประกอบ (composite number)</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่าง : \(14\) เป็นจำนวนประกอบหรือจำนวนเฉพาะ</h6>
+                  <h6 class="lh-base ps-5">\(14\) เป็นจำนวนประกอบ เพราะมีตัวประกอบมากกว่าสองจำนวน ได้แก่ \(1,2,7,14\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น \(14\) เป็นจำนวนประกอบ</h6>
+                </div>
+                <h6 class="lh-base text-muted">▸ \(1\) ไม่เป็นจำนวนประกอบ เพราะมีตัวประกอบเพียงจำนวนเดียว</h6>
+              </div>
+              
+              <div id="item-6" class="p-3">
+                <h3>การแยกตัวประกอบเฉพาะ</h3>
+                <h6 class="lh-base">จำนวนนับทุกจำนวนที่ไม่ใช่ \(1\) สามารถทำให้อยู่ในรูปการคูณของตัวประกอบเฉพาะ โดยที่แต่ละจำนวนจะมีรูปแบบการคูณที่เป็นเฉพาะของตัวมันเอง ซึ่งเรียกว่า การแยกตัวประกอบเฉพาะ (prime factorization) ของจำนวนนับ</h6>
+                <h6 class="lh-base">สำหรับวิธีการแยกตัวประกอบแบบเป็นขั้นตอน เราจะทำการหารจำนวนนั้นด้วยจำนวนเฉพาะที่หารลงตัว (หรือหารด้วยตัวประกอบเฉพาะ) แล้วหารผลลัพธ์ใหม่แบบเดิมจนกว่าจะได้ผลหารเป็น \(1\)</h6>
+                <h6 class="lh-base">โดยเราจะเริ่มหารจากจำนวนเฉพาะที่น้อยที่สุดที่เป็นไปได้ก่อน (เราสามารถหารด้วยจำนวนใดก่อนก็ได้ แต่ในที่นี้จะแสดงให้เห็นเป็นขั้นตอนที่เป็นระเบียบ)</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่าง : จงแยกตัวประกอบของ \(50\)</h6>
+                  <div class="text-center"><img src="/public/res/img/natural_number_fctz1.svg" alt="prime factorization by division"></div>
+                </div>
+              </div>
+              
+              <div id="item-7" class="p-3">
+                <h3>พหุคูณของจำนวนนับ</h3>
+                <h6 class="lh-base">จาก <a href="#item-2">ตัวประกอบของจำนวนนับ</a> เราทราบว่าตัวหารที่หารตัวตั้ง (dividend) ลงตัว คือ ตัวประกอบ ในทางกลับกัน เราจะเรียกตัวตั้งตัวนั้น ว่าเป็นพหุคูณ (multiple) หนึ่งของตัวหารตัวนั้น</h6>
+                <h6 class="lh-base">นั่นคือ พหุคูณของจำนวนนับ \(a\) ใด ๆ คือ จำนวนนับที่หารด้วย \(a\) ลงตัว</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(1\) : \(6\) เป็นพหุคูณของ \(3\) หรือไม่</h6>
+                  <h6 class="lh-base ps-5">\(6\) เป็นพหุคูณของ \(3\) เพราะ \(6\) หารด้วย \(3\) ลงตัว</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น \(6\) เป็นพหุคูณของ \(3\)</h6>
+                </div>
+                <h6 class="lh-base">อย่างไรก็ตาม เราไม่สามารถหาพหุคูณทั้งหมดได้ เพราะจำนวนนับมีเป็นอนันต์</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาพหุคูณทั้งหมดของ \(2\)</h6>
+                  <h6 class="lh-base ps-5">\(2,4,6,8,10,12,14,...\) เป็นพหุคูณทั้งหมดของ \(2\) เพราะจำนวนเหล่านี้หารด้วย \(2\) ลงตัว</h6>
+                </div>
+                <h6 class="lh-base text-muted">▸ พหุคูณ มีอีกชื่อหนึ่งเรียกว่า ตัวคูณ</h6>
+              </div>
+
+              <div id="item-8" class="p-3">
+                <h3>ตัวหารร่วม</h3>
+                <h6 class="lh-base">ตัวหารร่วม (common divisor) คือ ตัวหารที่หารจำนวนนับตั้งแต่สองจำนวนขึั้นไปที่แตกต่างกันได้ลงตัวพร้อมกัน</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">พิจารณาตัวหารหรือตัวประกอบของ \(12\) และ \(30\) ได้เป็นดังนี้</h6>
+                  <h6 class="lh-base ps-5">ตัวหารของ \(12\) ได้แก่ \(1,2,3,4,6,12\)</h6>
+                  <h6 class="lh-base ps-5">ตัวหารของ \(30\) ได้แก่ \(1,2,3,5,6,10,15,30\)</h6>
+                  <h6 class="lh-base ps-5">จะสังเกตเห็นได้ว่า ตัวหารที่เหมือนกันของทั้งสองจำนวน ได้แก่ \(1,2,3,6\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น จะได้ว่า ตัวหารร่วมของ \(12\) และ \(30\) ได้แก่ \(1,2,3,6\)</h6>
+                  <h6 class="lh-base ps-5">หากนำจำนวนเหล่านี้ไปหาร \(12\) และ \(30\) จะพบว่าหารได้ลงตัวทั้งหมด</h6>
+                  <h6 class="lh-base">เพื่อให้เข้าใจยิ่งขึ้น ลองพิจารณาตัวหารของ \(4, 9\) และ \(12\)</h6>
+                  <h6 class="lh-base ps-5">ตัวหารของ \(4\) ได้แก่ \(1,2,4\)</h6>
+                  <h6 class="lh-base ps-5">ตัวหารของ \(9\) ได้แก่ \(1,3,9\)</h6>
+                  <h6 class="lh-base ps-5">ตัวหารของ \(12\) ได้แก่ \(1,2,3,4,6,12\)</h6>
+                  <h6 class="lh-base ps-5">จะสังเกตเห็นได้ว่า ตัวหารที่เหมือนกันของทั้งสามจำนวน ได้แก่ \(1\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น จะได้ว่า ตัวหารร่วมของ \(4, 9\) และ \(12\) ได้แก่ \(1\)</h6>
+                </div>
+                <h6 class="lh-base text-muted">▸ หากจำนวนนับที่นำมาหาตัวหารร่วมเป็นจำนวนเฉพาะทั้งหมด จะมีเพียงแค่ \(1\) ที่เป็นตัวหารร่วม</h6>
+                <h6 class="lh-base text-muted">▸ หากจำนวนนับที่นำมาหาตัวหารร่วมมี \(1\) รวมอยู่ จะมีเพียงแค่ \(1\) ที่เป็นตัวหารร่วม</h6>
+              </div>
+
+              <div id="item-9" class="p-3">
+                <h3>ตัวหารร่วมมาก</h3>
+                <h6 class="lh-base">ตัวหารร่วมมาก หรือ ห.ร.ม. (greatest common divisor : gcd) คือ ตัวหารร่วมของจำนวนนับตั้งแต่สองจำนวนขึ้นไปที่มากที่สุด</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">พิจารณาตัวหารหรือตัวประกอบของ \(12\) และ \(30\) ได้เป็นดังนี้</h6>
+                  <h6 class="lh-base ps-5">ตัวหารของ \(30\) ได้แก่ \(1,2,3,5,6,10,15,30\)</h6>
+                  <h6 class="lh-base ps-5">จะได้ว่า ตัวหารร่วมของ \(12\) และ \(30\) ได้แก่ \(1,2,3,6\)</h6>
+                  <h6 class="lh-base ps-5">และพบว่า ตัวหารร่วมที่มากที่สุด คือ \(6\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น ห.ร.ม. ของ \(12\) และ \(30\) คือ \(6\)</h6>
+                </div>
+                <h6 class="lh-base">เรายังสามารถใช้เทคนิคการหารเพื่อหา ห.ร.ม. ได้ โดยมีขั้นตอนดังนี้</h6>
+                <div class="my-3 ps-5">
+                  <h6 class="lh-base">\(1.\) หารจำนวนเหล่านั้้นพร้อมกันด้วยจำนวนเฉพาะที่หารลงตัวได้ทั้งหมด</h6>
+                  <h6 class="lh-base">\(2.\) ทำซ้ำข้อ \(1.\) โดยให้ผลลัพธ์เป็นตัวตั้งหาร</h6>
+                  <h6 class="lh-base">\(3.\) เมื่อหารต่อไม่ได้แล้ว ให้นำตัวหารที่ได้ทั้งหมดมาคูณกัน ซึ่งผลลัพธ์จะเป็น ห.ร.ม.</h6>
+                </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหา ห.ร.ม. ของ \(24\) และ \(32\)</h6>
+                  <div class="text-center"><img src="/public/res/img/natural_number_gcd1.svg" alt="gcd by division"></div>
+                  <h6 class="lh-base ps-5">ดังนั้น ห.ร.ม. ของ \(24\) และ \(32\) เป็น \(8\)</h6>
+                </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหา ห.ร.ม. ของ \(30,45\) และ \(60\)</h6>
+                  <div class="text-center"><img src="/public/res/img/natural_number_gcd2.svg" alt="gcd by division"></div>
+                  <h6 class="lh-base ps-5">ดังนั้น ห.ร.ม. ของ \(30,45\) และ \(60\) เป็น \(15\)</h6>
+                </div>
+              </div>
+
+              <div id="item-10" class="p-3">
+                <h3>ตัวคูณร่วม</h3>
+                <h6 class="lh-base">ตัวคูณร่วม (common multiple) คือ ตัวคูณที่หารด้วยจำนวนนับตั้งแต่สองจำนวนขึั้นไปที่แตกต่างกันได้ลงตัวพร้อมกัน</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">พิจารณาตัวคูณหรือพหุคูณของ \(6\) และ \(9\) ได้เป็นดังนี้</h6>
+                  <h6 class="lh-base ps-5">ตัวคูณของ \(6\) ได้แก่ \(6,12,18,24,30,36,...\)</h6>
+                  <h6 class="lh-base ps-5">ตัวคูณของ \(9\) ได้แก่ \(9,18,27,36,45,54,...\)</h6>
+                  <h6 class="lh-base ps-5">จะสังเกตเห็นได้ว่า ตัวคูณที่เหมือนกันของทั้งสองจำนวน ได้แก่ \(18,36,54,72,...\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น จะได้ว่า ตัวคูณร่วมของ \(6\) และ \(9\) ได้แก่ \(18,36,54,72,...\)</h6>
+                  <h6 class="lh-base ps-5">หากนำจำนวนเหล่านี้ไปหารด้วย \(6\) และ \(9\) จะพบว่าหารได้ลงตัวทั้งหมด</h6>
+                  <h6 class="lh-base">เพื่อให้เข้าใจยิ่งขึ้น ลองพิจารณาตัวคูณของ \(2, 3\) และ \(5\)</h6>
+                  <h6 class="lh-base ps-5">ตัวคูณของ \(2\) ได้แก่ \(2,4,6,8,10,...,30,...\)</h6>
+                  <h6 class="lh-base ps-5">ตัวคูณของ \(3\) ได้แก่ \(3,6,9,12,15,...,30,...\)</h6>
+                  <h6 class="lh-base ps-5">ตัวคูณของ \(5\) ได้แก่ \(5,10,15,20,25,30,35,...\)</h6>
+                  <h6 class="lh-base ps-5">จะสังเกตเห็นได้ว่า ตัวคูณที่เหมือนกันของทั้งสามจำนวน ได้แก่ \(30,60,90,...\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น จะได้ว่า ตัวหารคูณของ \(2, 3\) และ \(5\) ได้แก่ \(30,60,90,...\)</h6>
+                </div>
+                <h6 class="lh-base text-muted">▸ หากจำนวนนับที่นำมาหาตัวคูณร่วมเป็นจำนวนเฉพาะทั้งหมด รูปแบบของตัวคูณร่วมหาได้จากพหุคูณของผลคูณของจำนวนเฉพาะเหล่านั้น</h6>
+              </div>
+
+              <div id="item-11" class="p-3">
+                <h3>ตัวคูณร่วมน้อย</h3>
+                <h6 class="lh-base">ตัวคูณร่วมน้อย หรือ ค.ร.น. (least common multiple : lcm) คือ ตัวคูณร่วมของจำนวนนับตั้งแต่สองจำนวนขึ้นไปที่น้อยที่สุด</h6>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">พิจารณาตัวคูณหรือพหุคูณของ \(6\) และ \(9\) ได้เป็นดังนี้</h6>
+                  <h6 class="lh-base ps-5">ตัวคูณของ \(6\) ได้แก่ \(6,12,18,24,30,36,...\)</h6>
+                  <h6 class="lh-base ps-5">ตัวคูณของ \(9\) ได้แก่ \(9,18,27,36,45,54,...\)</h6>
+                  <h6 class="lh-base ps-5">จะได้ว่า ตัวคูณร่วมของ \(6\) และ \(9\) ได้แก่ \(18,36,54,72,...\)</h6>
+                  <h6 class="lh-base ps-5">และพบว่า ตัวคูณร่วมที่น้อยที่สุด คือ \(18\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น ค.ร.น. ของ \(6\) และ \(9\) คือ \(18\)</h6>
+                </div>
+                <h6 class="lh-base">เรายังสามารถใช้เทคนิคการหารเพื่อหา ค.ร.น. ได้ โดยมีขั้นตอนดังนี้</h6>
+                <div class="my-3 ps-5">
+                  <h6 class="lh-base">\(1.\) หารจำนวนเหล่านั้้นพร้อมกันด้วยจำนวนเฉพาะที่หารลงตัวได้ทั้งหมด</h6>
+                  <h6 class="lh-base">\(2.\) ทำซ้ำข้อ \(1.\) โดยให้ผลลัพธ์เป็นตัวตั้งหาร</h6>
+                  <h6 class="lh-base">\(3.\) หากไม่มีจำนวนเฉพาะที่หารจำนวนทั้งหมดได้แล้ว ให้หารด้วยจำนวนเฉพาะที่หารจำนวนเหล่านั้นลงตัวอย่างน้อยสองจำนวน</h6>
+                  <h6 class="lh-base">\(4.\) ทำซ้ำข้อ \(3.\) โดยให้ผลลัพธ์เป็นตัวตั้งหาร</h6>
+                  <h6 class="lh-base">\(5.\) เมื่อหารต่อไม่ได้แล้ว ให้นำตัวหารที่ได้และผลลัพธ์สุดท้ายทั้งหมดมาคูณกัน ซึ่งผลลัพธ์จะเป็น ค.ร.น.</h6>
+                </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหา ค.ร.น. ของ \(8,14\) และ \(24\)</h6>
+                  <div class="text-center"><img src="/public/res/img/natural_number_lcm1.svg" alt="lcm by division"></div>
+                  <h6 class="lh-base ps-5">ดังนั้น ค.ร.น. ของ \(8,14\) และ \(24\) เป็น \(168\)</h6>
+                </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหา ค.ร.น. ของ \(2,3,5\) และ \(6\)</h6>
+                  <div class="text-center"><img src="/public/res/img/natural_number_lcm2.svg" alt="lcm by division"></div>
+                  <h6 class="lh-base ps-5">ดังนั้น ค.ร.น. ของ \(2,3,5\) และ \(6\) เป็น \(30\)</h6>
+                </div>
+              </div>
+              
+              <div id="item-12" class="p-3">
+                <h3>ความสัมพันธ์ระหว่างจำนวนนับสองจำนวน ห.ร.ม. และ ค.ร.น.</h3>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">พิจารณา ห.ร.ม. และ ค.ร.น. ของ \(36\) และ \(48\)</h6>
+                  <div class="text-center mb-2"><img src="/public/res/img/natural_number_ngl1.svg" alt="gcd and lcm"></div>
+                  <h6 class="lh-base ps-5">พิจารณาผลคูณของ \(36\) และ \(48\) ได้เป็น \(36\times48=1728\)</h6>
+                  <h6 class="lh-base ps-5">และพิจารณาผลคูณของ ห.ร.ม. และ ค.ร.น. ของ \(36\) และ \(48\) ได้เป็น \(12\times144=1728\)</h6>
+                </div>
+                <h6 class="lh-base">จะสังเกตเห็นได้ว่า ผลคูณทั้งสองมีค่าเท่ากัน ทำให้ได้ว่า ผลคูณของสองจำนวนนับใด ๆ มีค่าเท่ากับผลคูณของ ห.ร.ม. และ ค.ร.น. ของสองจำนวนนับนั้น</h6>
+                <h6 class="lh-base">ถ้าให้ \(a,b\) แทนจำนวนนับใด ๆ</h6>
+                <h6 class="lh-base">\(gcd(a,b)\) แทน ห.ร.ม. ของ \(a\) และ \(b\)</h6>
+                <h6 class="lh-base">\(lcm(a,b)\) แทน ค.ร.น. ของ \(a\) และ \(b\)</h6>
+                <h6 class="lh-base">แล้ว \(a\times b = gcd(a,b)\times lcm(a,b)\)</h6>
+              </div>
+
+              <div id="item-13" class="p-3">
+                <h3>การประยุกต์ของ ห.ร.ม. และ ค.ร.น.</h3>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(1\) : จงหาจำนวนนับที่มากที่สุดที่หาร \(25\) และหาร \(49\) เหลือเศษเป็น \(1\)</h6>
+                  <h6 class="lh-base ps-5">หากนำเศษ \(1\) ไปลบออกจาก \(25\) และ \(49\) จะได้ \(24\) และ \(48\) และหากหา ห.ร.ม. ของ \(24\) และ \(48\) จะได้ ห.ร.ม. เป็น \(24\)</h6>
+                  <h6 class="lh-base ps-5">ซึ่ง ห.ร.ม. ที่ได้นี้ เมื่อนำไปหาร \(25\) และ \(49\) จะพบว่าเหลือเศษเป็น \(1\) ทั้งคู่</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น จำนวนนับที่มากที่สุดที่หาร \(25\) และ \(49\) เหลือเศษ \(1\) คือ \(24\) นั่นเอง</h6>
+                </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(2\) : จงหาจำนวนนับที่มากที่สุดที่หาร \(47\) เหลือเศษเป็น \(2\) และหาร \(49\) เหลือเศษเป็น \(1\)</h6>
+                  <h6 class="lh-base ps-5">เช่นเดียวกับตัวอย่างที่ \(1\) เพียงแต่เศษแตกต่างกัน ให้นำเศษของแต่ละจำนวนมาลบ แล้วหา ห.ร.ม.</h6>
+                  <h6 class="lh-base ps-5">ซึ่งเมื่อนำเศษมาลบออกแล้วจะได้เป็น \(45\) และ \(48\) แล้วหา ห.ร.ม. ออกมาได้เป็น \(3\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น จำนวนนับที่มากที่สุดที่หาร \(47\) เหลือเศษเป็น \(2\) และหาร \(49\) เหลือเศษเป็น \(1\) คือ \(3\)</h6>
+                </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(3\) : จงหาจำนวนนับที่มากที่สุดที่หาร \(28,38\) และ \(58\) เหลือเศษเท่ากัน</h6>
+                  <h6 class="lh-base ps-5">จากโจทย์เราไม่ทราบแน่ชัดว่าเศษเป็นตัวใด เพียงแต่รู้ว่าเท่ากัน</h6>
+                  <h6 class="lh-base ps-5">หากลองหาผลต่างจำนวนเหล่านั้นทั้งสามจำนวน (นับเฉพาะผลต่างที่เป็นบวก) แล้วนำมาหา ห.ร.ม. ก็ยังคงเป็นผลลัพธ์ของปัญหานี้ด้วย การทำเช่นนี้จะทำให้ตัวเศษหายไป เพราะการนำสองจำนวนที่มีเศษเท่ากันมาลบกัน ย่อมเสมือนการลบเศษออกไปด้วย</h6>
+                  <h6 class="lh-base ps-5">เราจะได้ผลต่างทั้งสามแบบ ได้ดังนี้</h6>
+                  <h6 class="lh-base ps-5">\(38-28 = 10\)</h6>
+                  <h6 class="lh-base ps-5">\(58-38 = 20\)</h6>
+                  <h6 class="lh-base ps-5">\(58-28 = 30\)</h6>
+                  <h6 class="lh-base ps-5">จากนั้นเราจะหา ห.ร.ม. ของทั้งสามผลต่าง ซึ่งได้เป็น \(10\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น จำนวนนับที่มากที่สุดที่หาร \(28,38\) และ \(58\) เหลือเศษเท่ากัน คือ \(10\)</h6>
+                  <h6 class="lh-base ps-5">นอกจากนี้ ยังทำให้เราทราบว่า เศษที่เท่ากันเหล่านั้น คือ \(8\) อีกด้วย</h6>
+                </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(4\) : ไอซ์มีปากกาสีแดง \(21\) ด้าม มีปากกาสีน้ำเงิน \(28\) ด้าม และมีปากกาสีดำ \(14\) ด้าม ไอซ์ต้องการแบ่งปากกาใส่กล่องของที่ระลึก โดยแต่ละกล่องเป็นสีเดียวกัน และแบ่งทุกกล่องให้มีจำนวนปากกามากที่สุดและมีเท่า ๆ กัน ไอซ์จะแบ่งใส่แต่ละกล่องได้กี่ด้าม</h6>
+                  <h6 class="lh-base ps-5">จากโจทย์ต้องการหาจำนวนปากกาในแต่ละกล่องให้มากที่สุด โดยแบ่งเท่า ๆ กัน แบบไม่ผสมสีกัน เป็นรูปแบบโจทย์ของการหา ห.ร.ม. ซึ่งแต่ละจำนวนคือจำนวนปากกา</h6>
+                  <h6 class="lh-base ps-5">ทำการหา ห.ร.ม. ของ \(21,28\) และ \(14\) ซึ่งได้เป็น \(7\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น ไอซ์จะแบ่งใส่แต่ละกล่องได้ \(7\) ด้าม</h6>
+                  <h6 class="lh-base ps-5">นอกจากนี้ ยังทำให้เราทราบว่า แต่ละสีแบ่งใส่ได้กี่กล่อง โดยนำ \(7\) ไปหาร \(21,28\) และ \(14\) ทำให้ได้ว่า</h6>
+                  <h6 class="lh-base ps-5">ปากกาสีแดงแบ่งได้ \(3\) กล่อง</h6>
+                  <h6 class="lh-base ps-5">ปากกาสีน้ำเงินแบ่งได้ \(4\) กล่อง</h6>
+                  <h6 class="lh-base ps-5">ปากกาสีดำแบ่งได้ \(2\) กล่อง</h6>
+                  <h6 class="lh-base text-muted">▸ หากทำโดยวิธีการหารจะมองออกได้ง่ายกว่า ไม่ต้องหารอีกรอบ</h6>
+                </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(5\) : จงหาจำนวนนับที่น้อยที่สุดที่หารด้วย \(10,12\) และ \(16\) เหลือเศษ \(3\) เท่ากัน</h6>
+                  <h6 class="lh-base ps-5">จากโจทย์ต้องการหาจำนวนนับที่น้อยที่สุด โดยหากไม่คิดเศษก่อน (เหลือเศษ \(0\) หรือหารลงตัว) ก็หมายถึงการหา ค.ร.น. หากเพิ่มเศษเข้าไปหลังจากนั้น แล้วนำไปหารก็จะพบว่าเหลือเศษเท่านั้นจริง</h6>
+                  <h6 class="lh-base ps-5">ทำการหา ค.ร.น. ของ \(10,12\) และ \(16\) ซึ่งได้เป็น \(240\)</h6>
+                  <h6 class="lh-base ps-5">แล้วเพิ่มเศษเข้าไป จะได้ \(240 + 3 = 243\)</h6>
+                  <h6 class="lh-base ps-5">ดังนั้น จำนวนนับที่น้อยที่สุดที่หารด้วย \(10,12\) และ \(16\) เหลือเศษ \(3\) เท่ากัน คือ \(243\) นั่นเอง</h6>
+                </div>
+                <div class="my-3 ps-5 py-3">
+                  <h6 class="lh-base">ตัวอย่างที่ \(6\) : แก้ว แหวน เงิน ทอง ไปเที่ยวสวนสนุกด้วยกัน แล้วพบชิงช้าสวรรค์ยักษ์สี่ตัวที่หมุนไม่พร้อมกัน จึงนึกสนุกชวนกันมาจับเวลาที่ชิงช้าสวรรค์แต่ละตัวใช้ในการหมุนหนึ่งรอบ โดยแก้วจับเวลาตัวแรกใช้เวลา \(6\) นาที แหวนจับเวลาตัวที่สองใช้เวลา \(8\) นาที เงินจับเวลาตัวที่สามใช้เวลา \(10\) นาที และทองจับเวลาตัวที่สี่ใช้เวลา \(12\) นาที อยู่ ๆ ครูด๋อย ครูสอนคณิตศาสตร์ของทั้งสี่คนมาเห็น จึงให้ทั้งสี่หาว่าถ้าเริ่มหมุนพร้อมกันที่จุดขึ้น แล้วอีกกี่นาทีที่จะถึง ที่ทั้งสี่ตัวจะพบกันที่จุดขึ้นเดิมอีกครั้ง โดยชิงช้าสวรรค์ไม่หยุดหลังจากเริ่มหมุน จงช่วยทั้งสี่คนตอบคำถาม</h6>
+                  <h6 class="lh-base ps-5">จากโจทย์ต้องการหาเวลาที่จะถึง คือ เวลาที่น้อยที่สุดที่ชิงช้าสวรรค์ทั้งสี่ตัว จะมาเจอกันที่จุดเดิมอีกครั้ง ซึ่งเป็นรูปแบบของการหา ค.ร.น.</h6>
+                  <h6 class="lh-base ps-5">ทำการหา ค.ร.น. ของ \(6,8,10\) และ \(12\) ซึ่งได้เป็น \(120\)</h6>
+                  <h6 class="lh-base ps-5">นั่นคือ เวลาที่น้อยที่สุดที่ชิงช้าสวรรค์ทั้งสี่ตัว จะมาเจอกันที่จุดเดิมอีกครั้ง คือ อีก \(120\) นาที หลังจากหมุน</h6>
+                </div>
+              </div>
+              
               <div>
                 <button type="button" class="btn btn-outline-dark mt-4 float-end" disabled>ทำแบบทดสอบ</button>
               </div>
             </div>
-            <div class="col-2 d-none d-lg-block">
-            </div>
-        </div>
+          </main>
+        <!-- </div> -->
         <nav aria-label="Page navigation" class="m-4">
           <ul class="pagination justify-content-center">
             <li class="page-item disabled">
@@ -618,9 +402,6 @@
             </li>
           </ul>
         </nav>
-
-        <hr class="m-4">
-
         <!-- footer -->
         <div class="container-fluid bg-dark text-secondary py-3">
           <div class="row">
@@ -629,7 +410,6 @@
             </div>
           </div>
         </div>
-      </div>
 
     <!-- Close Content -->
     
@@ -639,14 +419,6 @@
 
 
     <script>
-      go.addEventListener("click", ()=>{
-        back.setAttribute("class","d-inline btn btn-warning")
-      })
-      back.addEventListener("click", ()=> {
-        history.back()
-        back.setAttribute("class","d-none btn btn-warning")
-      });
-
     </script>
     <script src="/public/res/js/bootstrap.js"></script>
     <script>
